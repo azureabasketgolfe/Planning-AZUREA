@@ -39,6 +39,12 @@
     --prm-tint: #F2E1DE;
     --u21: #7A5A9E;
     --u21-tint: #EDE5F3;
+    --u18d3: #7CA0C2;
+    --u18d3-tint: #E9F0F6;
+    --u11: #1E8A9E;
+    --u11-tint: #DCEEF1;
+    --u11d3: #6FC2D1;
+    --u11d3-tint: #E3F4F6;
     --shadow: rgba(15, 30, 45, 0.10);
   }
   :root:not([data-theme="light"]) {
@@ -73,6 +79,12 @@
       --prm-tint: #3A2320;
       --u21: #B79ED9;
       --u21-tint: #291F35;
+      --u18d3: #B8D0E8;
+      --u18d3-tint: #22303F;
+      --u11: #6FC9DB;
+      --u11-tint: #17282B;
+      --u11d3: #A8E0EA;
+      --u11d3-tint: #17282B;
       --shadow: rgba(0, 0, 0, 0.35);
     }
   }
@@ -107,6 +119,12 @@
     --prm-tint: #3A2320;
     --u21: #B79ED9;
     --u21-tint: #291F35;
+    --u18d3: #B8D0E8;
+    --u18d3-tint: #22303F;
+    --u11: #6FC9DB;
+    --u11-tint: #17282B;
+    --u11d3: #A8E0EA;
+    --u11d3-tint: #17282B;
     --shadow: rgba(0, 0, 0, 0.35);
   }
 
@@ -130,6 +148,7 @@
   header.top .club { font-size: 13px; letter-spacing: 0.02em; color: var(--ink-soft); margin: 0 0 2px; }
   header.top h1 { font-size: clamp(24px, 4.6vw, 38px); font-weight: 700; margin: 0; color: var(--navy); line-height: 1.05; }
   header.top .sub { color: var(--ink-soft); margin-top: 6px; font-size: 14.5px; }
+  .updated-note { color: var(--ink-soft); font-size: 12.5px; margin: 10px 0 4px; font-style: italic; }
 
   .view-switch { display: flex; gap: 8px; margin: 4px 0 14px; }
   .view-btn {
@@ -210,6 +229,15 @@
   body.hide-u13 .chip.u13Home, body.hide-u13 .chip.u13Away, body.hide-u13 .mini-dot.u13Home, body.hide-u13 .mini-dot.u13Away { display: none; }
   body.hide-prm .chip.prmHome, body.hide-prm .chip.prmAway, body.hide-prm .mini-dot.prmHome, body.hide-prm .mini-dot.prmAway { display: none; }
   body.hide-u21 .chip.u21Home, body.hide-u21 .chip.u21Away, body.hide-u21 .mini-dot.u21Home, body.hide-u21 .mini-dot.u21Away { display: none; }
+  .mini-dot.u18d3Home { background: var(--u18d3); }
+  .mini-dot.u18d3Away { background: var(--u18d3); opacity: 0.55; }
+  .mini-dot.u11Home { background: var(--u11); }
+  .mini-dot.u11Away { background: var(--u11); opacity: 0.55; }
+  .mini-dot.u11d3Home { background: var(--u11d3); }
+  .mini-dot.u11d3Away { background: var(--u11d3); opacity: 0.55; }
+  body.hide-u18d3 .chip.u18d3Home, body.hide-u18d3 .chip.u18d3Away, body.hide-u18d3 .mini-dot.u18d3Home, body.hide-u18d3 .mini-dot.u18d3Away { display: none; }
+  body.hide-u11 .chip.u11Home, body.hide-u11 .chip.u11Away, body.hide-u11 .mini-dot.u11Home, body.hide-u11 .mini-dot.u11Away { display: none; }
+  body.hide-u11d3 .chip.u11d3Home, body.hide-u11d3 .chip.u11d3Away, body.hide-u11d3 .mini-dot.u11d3Home, body.hide-u11d3 .mini-dot.u11d3Away { display: none; }
 
   .note-strip {
     background: var(--gold-tint); border: 1px solid var(--gold); border-radius: 8px;
@@ -277,6 +305,12 @@
   .chip.prmAway { background: none; color: var(--prm); border: 1px dashed var(--prm); font-weight: 400; }
   .chip.u21Home { background: var(--u21-tint); color: var(--u21); font-weight: 400; }
   .chip.u21Away { background: none; color: var(--u21); border: 1px dashed var(--u21); font-weight: 400; }
+  .chip.u18d3Home { background: var(--u18d3-tint); color: var(--u18d3); font-weight: 400; }
+  .chip.u18d3Away { background: none; color: var(--u18d3); border: 1px dashed var(--u18d3); font-weight: 400; }
+  .chip.u11Home { background: var(--u11-tint); color: var(--u11); font-weight: 400; }
+  .chip.u11Away { background: none; color: var(--u11); border: 1px dashed var(--u11); font-weight: 400; }
+  .chip.u11d3Home { background: var(--u11d3-tint); color: var(--u11d3); font-weight: 400; }
+  .chip.u11d3Away { background: none; color: var(--u11d3); border: 1px dashed var(--u11d3); font-weight: 400; }
 
   .undated {
     margin-top: 28px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-panel);
@@ -345,6 +379,8 @@
       <p class="sub">Championnat N3, temps forts du club et jours de vacances scolaires (zone B) — cliquez une date pour le détail.</p>
     </div>
   </header>
+
+  <p class="updated-note">Dernière mise à jour : 25 septembre 2026</p>
 
   <div class="view-switch">
     <button class="view-btn active" id="btn-month-view" onclick="setView('month')">Par mois</button>
@@ -512,6 +548,23 @@ const U21_MATCHES = [
   {date:'2027-05-23', opponent:'Vitrolles Sport Basket Ball', venue:'exterieur', time:'17:00'},
 ];
 
+const U18D3_MATCHES = [
+  {date:'2026-10-11', opponent:'US Grassoise - 2', venue:'domicile'},
+  {date:'2026-10-18', opponent:'ES Villeneuve Loubet Basket - 2', venue:'exterieur'},
+];
+
+const U11_MATCHES = [
+  {date:'2026-10-03', opponent:'Le Cannet Cote d\'Azur Basket - 1', venue:'domicile'},
+  {date:'2026-10-10', opponent:'US Grassoise - 1', venue:'exterieur'},
+  {date:'2026-10-17', opponent:'Sports et Loisirs Mouginois Basket', venue:'exterieur'},
+];
+
+const U11D3_MATCHES = [
+  {date:'2026-10-03', opponent:'Vence Basket Club - 2', venue:'domicile'},
+  {date:'2026-10-10', opponent:'SC Mouans Sartoux Basket Ball', venue:'exterieur'},
+  {date:'2026-10-17', opponent:'Cansa Basket', venue:'exterieur'},
+];
+
 const EVENTS = [
   {date:'2026-09-09', label:'Soirée partenaire', type:'event', confirmed:true},
   {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:false},
@@ -571,7 +624,7 @@ function inRange(iso, start, end) { return iso >= start && iso <= end; }
 function stageFor(iso) {
   return STAGES.find(s => inRange(iso, s.start, s.end)) || null;
 }
-const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away']);
+const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away','u18d3Home','u18d3Away','u11Home','u11Away','u11d3Home','u11d3Away']);
 function timeToMinutes(t) { if (!t) return 9999; const [h,m] = t.split(':').map(Number); return h*60+m; }
 function formatTimeShort(t) {
   if (!t) return '';
@@ -596,6 +649,9 @@ function entriesFor(iso) {
   U13_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'u13Home' : 'u13Away', label: x.opponent, time: x.time}));
   PRM_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'prmHome' : 'prmAway', label: x.opponent, time: x.time}));
   U21_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'u21Home' : 'u21Away', label: x.opponent, time: x.time}));
+  U18D3_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'u18d3Home' : 'u18d3Away', label: x.opponent, time: x.time}));
+  U11_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'u11Home' : 'u11Away', label: x.opponent, time: x.time}));
+  U11D3_MATCHES.filter(x => x.date === iso).forEach(x => secondary.push({kind: x.venue === 'domicile' ? 'u11d3Home' : 'u11d3Away', label: x.opponent, time: x.time}));
   if (n3Items.length === 0) {
     secondary.sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
   }
@@ -617,8 +673,11 @@ const FILTERS = [
   {key:'prm', label:'PRM', swatch:'background:var(--prm)'},
   {key:'u21', label:'U21 R', swatch:'background:var(--u21)'},
   {key:'u18', label:'U18 R', swatch:'background:var(--u18)'},
+  {key:'u18d3', label:'U18 D3', swatch:'background:var(--u18d3)'},
   {key:'u15', label:'U15 R', swatch:'background:var(--u15)'},
   {key:'u13', label:'U13 R', swatch:'background:var(--u13)'},
+  {key:'u11', label:'U11', swatch:'background:var(--u11)'},
+  {key:'u11d3', label:'U11 D3', swatch:'background:var(--u11d3)'},
   {key:'school', label:'Vacances scolaires (zone B)', swatch:'background:var(--school-band)'},
   {key:'holiday', label:'Jours fériés', swatch:'background:none;border:1px solid var(--grey)'},
 ];
@@ -765,9 +824,9 @@ function openPanel(iso, items, school) {
     panel.appendChild(p);
   }
 
-  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'U15 R', u15Away:'U15 R', u18Home:'U18 R', u18Away:'U18 R', u13Home:'U13 R', u13Away:'U13 R', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R'};
-  const COMP_COLOR = {home:'--navy', away:'--navy', pnmHome:'--pnm', pnmAway:'--pnm', u15Home:'--u15', u15Away:'--u15', u18Home:'--u18', u18Away:'--u18', u13Home:'--u13', u13Away:'--u13', prmHome:'--prm', prmAway:'--prm', u21Home:'--u21', u21Away:'--u21'};
-  const COMP_TINT  = {home:'--navy-tint', away:'--navy-tint', pnmHome:'--pnm-tint', pnmAway:'--pnm-tint', u15Home:'--u15-tint', u15Away:'--u15-tint', u18Home:'--u18-tint', u18Away:'--u18-tint', u13Home:'--u13-tint', u13Away:'--u13-tint', prmHome:'--prm-tint', prmAway:'--prm-tint', u21Home:'--u21-tint', u21Away:'--u21-tint'};
+  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'U15 R', u15Away:'U15 R', u18Home:'U18 R', u18Away:'U18 R', u13Home:'U13 R', u13Away:'U13 R', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R', u18d3Home:'U18 D3', u18d3Away:'U18 D3', u11Home:'U11', u11Away:'U11', u11d3Home:'U11 D3', u11d3Away:'U11 D3'};
+  const COMP_COLOR = {home:'--navy', away:'--navy', pnmHome:'--pnm', pnmAway:'--pnm', u15Home:'--u15', u15Away:'--u15', u18Home:'--u18', u18Away:'--u18', u13Home:'--u13', u13Away:'--u13', prmHome:'--prm', prmAway:'--prm', u21Home:'--u21', u21Away:'--u21', u18d3Home:'--u18d3', u18d3Away:'--u18d3', u11Home:'--u11', u11Away:'--u11', u11d3Home:'--u11d3', u11d3Away:'--u11d3'};
+  const COMP_TINT  = {home:'--navy-tint', away:'--navy-tint', pnmHome:'--pnm-tint', pnmAway:'--pnm-tint', u15Home:'--u15-tint', u15Away:'--u15-tint', u18Home:'--u18-tint', u18Away:'--u18-tint', u13Home:'--u13-tint', u13Away:'--u13-tint', prmHome:'--prm-tint', prmAway:'--prm-tint', u21Home:'--u21-tint', u21Away:'--u21-tint', u18d3Home:'--u18d3-tint', u18d3Away:'--u18d3-tint', u11Home:'--u11-tint', u11Away:'--u11-tint', u11d3Home:'--u11d3-tint', u11d3Away:'--u11d3-tint'};
   function isHomeKind(k) { return k === 'home' || k.endsWith('Home'); }
 
   const matches = items.filter(it => MATCH_KINDS.has(it.kind));
