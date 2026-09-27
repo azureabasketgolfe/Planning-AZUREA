@@ -49,6 +49,10 @@
     --u13pr-tint: #EAF1E7;
     --u13d3: #8DB584;
     --u13d3-tint: #EFF5EC;
+    --fem-ink: #8E2A54;
+    --fem-tier1: #F3D3E2;
+    --fem-tier2: #F7E3EE;
+    --fem-tier3: #FBF0F5;
     --u11: #8C7A1E;
     --u11-tint: #F0EBD1;
     --u11d3: #C2AD4A;
@@ -97,6 +101,10 @@
       --u13pr-tint: #283A24;
       --u13d3: #B5D9AC;
       --u13d3-tint: #2C4028;
+      --fem-ink: #E88BB0;
+      --fem-tier1: #3A2030;
+      --fem-tier2: #2E1F28;
+      --fem-tier3: #241A20;
       --u11: #D4C15C;
       --u11-tint: #2E2A12;
       --u11d3: #E6D98C;
@@ -145,6 +153,10 @@
     --u13pr-tint: #283A24;
     --u13d3: #B5D9AC;
     --u13d3-tint: #2C4028;
+    --fem-ink: #E88BB0;
+    --fem-tier1: #3A2030;
+    --fem-tier2: #2E1F28;
+    --fem-tier3: #241A20;
     --u11: #D4C15C;
     --u11-tint: #2E2A12;
     --u11d3: #E6D98C;
@@ -272,6 +284,17 @@
   body.hide-u15d2 .chip.u15d2Home, body.hide-u15d2 .chip.u15d2Away, body.hide-u15d2 .mini-dot.u15d2Home, body.hide-u15d2 .mini-dot.u15d2Away { display: none; }
   body.hide-u13pr .chip.u13prHome, body.hide-u13pr .chip.u13prAway, body.hide-u13pr .mini-dot.u13prHome, body.hide-u13pr .mini-dot.u13prAway { display: none; }
   body.hide-u13d3 .chip.u13d3Home, body.hide-u13d3 .chip.u13d3Away, body.hide-u13d3 .mini-dot.u13d3Home, body.hide-u13d3 .mini-dot.u13d3Away { display: none; }
+  .mini-dot.nf2Home, .mini-dot.pnfHome, .mini-dot.prfHome, .mini-dot.rfu18Home, .mini-dot.rfu15Home, .mini-dot.rfu13Home, .mini-dot.dfu18Home, .mini-dot.dfu15Home, .mini-dot.dfu11Home { background: var(--fem-ink); }
+  .mini-dot.nf2Away, .mini-dot.pnfAway, .mini-dot.prfAway, .mini-dot.rfu18Away, .mini-dot.rfu15Away, .mini-dot.rfu13Away, .mini-dot.dfu18Away, .mini-dot.dfu15Away, .mini-dot.dfu11Away { background: var(--fem-ink); opacity: 0.55; }
+  body.hide-nf2 .chip.nf2Home, body.hide-nf2 .chip.nf2Away, body.hide-nf2 .mini-dot.nf2Home, body.hide-nf2 .mini-dot.nf2Away { display: none; }
+  body.hide-pnf .chip.pnfHome, body.hide-pnf .chip.pnfAway, body.hide-pnf .mini-dot.pnfHome, body.hide-pnf .mini-dot.pnfAway { display: none; }
+  body.hide-prf .chip.prfHome, body.hide-prf .chip.prfAway, body.hide-prf .mini-dot.prfHome, body.hide-prf .mini-dot.prfAway { display: none; }
+  body.hide-rfu18 .chip.rfu18Home, body.hide-rfu18 .chip.rfu18Away, body.hide-rfu18 .mini-dot.rfu18Home, body.hide-rfu18 .mini-dot.rfu18Away { display: none; }
+  body.hide-rfu15 .chip.rfu15Home, body.hide-rfu15 .chip.rfu15Away, body.hide-rfu15 .mini-dot.rfu15Home, body.hide-rfu15 .mini-dot.rfu15Away { display: none; }
+  body.hide-rfu13 .chip.rfu13Home, body.hide-rfu13 .chip.rfu13Away, body.hide-rfu13 .mini-dot.rfu13Home, body.hide-rfu13 .mini-dot.rfu13Away { display: none; }
+  body.hide-dfu18 .chip.dfu18Home, body.hide-dfu18 .chip.dfu18Away, body.hide-dfu18 .mini-dot.dfu18Home, body.hide-dfu18 .mini-dot.dfu18Away { display: none; }
+  body.hide-dfu15 .chip.dfu15Home, body.hide-dfu15 .chip.dfu15Away, body.hide-dfu15 .mini-dot.dfu15Home, body.hide-dfu15 .mini-dot.dfu15Away { display: none; }
+  body.hide-dfu11 .chip.dfu11Home, body.hide-dfu11 .chip.dfu11Away, body.hide-dfu11 .mini-dot.dfu11Home, body.hide-dfu11 .mini-dot.dfu11Away { display: none; }
   body.hide-u11 .chip.u11Home, body.hide-u11 .chip.u11Away, body.hide-u11 .mini-dot.u11Home, body.hide-u11 .mini-dot.u11Away { display: none; }
   body.hide-u11d3 .chip.u11d3Home, body.hide-u11d3 .chip.u11d3Away, body.hide-u11d3 .mini-dot.u11d3Home, body.hide-u11d3 .mini-dot.u11d3Away { display: none; }
 
@@ -351,6 +374,11 @@
   .chip.u13prAway { background: none; color: var(--u13pr); border: 1px dashed var(--u13pr); font-weight: 400; }
   .chip.u13d3Home { background: var(--u13d3-tint); color: var(--u13d3); font-weight: 400; }
   .chip.u13d3Away { background: none; color: var(--u13d3); border: 1px dashed var(--u13d3); font-weight: 400; }
+  .chip.nf2Home, .chip.pnfHome, .chip.prfHome, .chip.rfu18Home, .chip.rfu15Home, .chip.rfu13Home, .chip.dfu18Home, .chip.dfu15Home, .chip.dfu11Home { color: var(--fem-ink); font-weight: 400; }
+  .chip.nf2Away, .chip.pnfAway, .chip.prfAway, .chip.rfu18Away, .chip.rfu15Away, .chip.rfu13Away, .chip.dfu18Away, .chip.dfu15Away, .chip.dfu11Away { background: none; color: var(--fem-ink); border: 1px dashed var(--fem-ink); font-weight: 400; }
+  .chip.nf2Home, .chip.pnfHome, .chip.prfHome { background: var(--fem-tier1); }
+  .chip.rfu18Home, .chip.rfu15Home, .chip.rfu13Home { background: var(--fem-tier2); }
+  .chip.dfu18Home, .chip.dfu15Home, .chip.dfu11Home { background: var(--fem-tier3); }
   .chip.u11Home { background: var(--u11-tint); color: var(--u11); font-weight: 400; }
   .chip.u11Away { background: none; color: var(--u11); border: 1px dashed var(--u11); font-weight: 400; }
   .chip.u11d3Home { background: var(--u11d3-tint); color: var(--u11d3); font-weight: 400; }
@@ -631,6 +659,132 @@ const U13D3_MATCHES = [
   {date:'2026-10-17', opponent:'COV Valbonne', venue:'domicile'},
 ];
 
+const NF2_MATCHES = [
+  {date:'2026-09-12', opponent:'Charnay Basket Bourgogne Sud - Espoir', venue:'domicile', time:'17:30'},
+  {date:'2026-09-19', opponent:'BC La Tronche Meylan - Espoir', venue:'exterieur', time:'17:15'},
+  {date:'2026-09-26', opponent:'Saint Martin d\'Heres Basket - 1', venue:'domicile', time:'16:00'},
+  {date:'2026-10-03', opponent:'AL Meyzieu - 1', venue:'exterieur', time:'20:00'},
+  {date:'2026-10-10', opponent:'Amicale Laïque Lédonienne Jura Basket', venue:'domicile', time:'17:30'},
+  {date:'2026-10-24', opponent:'Pantheres Mulhouse Basket Alsace', venue:'exterieur', time:'20:00'},
+  {date:'2026-10-31', opponent:'Champagnole Jura Basket', venue:'exterieur', time:'20:00'},
+  {date:'2026-11-07', opponent:'Basket Club de Chenove', venue:'domicile', time:'20:00'},
+  {date:'2026-11-14', opponent:'Mauguio Basket', venue:'domicile', time:'17:30'},
+  {date:'2026-11-28', opponent:'Pays Voironnais Basket Club - 2', venue:'exterieur', time:'14:00'},
+  {date:'2026-12-05', opponent:'FC Lyon Asvel Feminin - Espoir', venue:'domicile', time:'17:30'},
+  {date:'2027-01-09', opponent:'Charnay Basket Bourgogne Sud - Espoir', venue:'exterieur', time:'16:45'},
+  {date:'2027-01-16', opponent:'BC La Tronche Meylan - Espoir', venue:'domicile', time:'16:00'},
+  {date:'2027-01-30', opponent:'Saint Martin d\'Heres Basket - 1', venue:'exterieur', time:'20:00'},
+  {date:'2027-02-06', opponent:'AL Meyzieu - 1', venue:'domicile', time:'20:00'},
+  {date:'2027-02-13', opponent:'Amicale Laïque Lédonienne Jura Basket', venue:'exterieur', time:'20:00'},
+  {date:'2027-02-27', opponent:'Pantheres Mulhouse Basket Alsace', venue:'domicile', time:'20:00'},
+  {date:'2027-03-06', opponent:'Champagnole Jura Basket', venue:'domicile', time:'20:00'},
+  {date:'2027-03-13', opponent:'Basket Club de Chenove', venue:'exterieur', time:'17:30'},
+  {date:'2027-03-27', opponent:'Mauguio Basket', venue:'exterieur', time:'20:00'},
+  {date:'2027-04-10', opponent:'Pays Voironnais Basket Club - 2', venue:'domicile', time:'17:30'},
+  {date:'2027-04-17', opponent:'FC Lyon Asvel Feminin - Espoir', venue:'exterieur', time:'17:15'},
+];
+
+const PNF_MATCHES = [
+  {date:'2026-09-13', opponent:'Stade Marseillais UC - 2', venue:'domicile', time:'13:15'},
+  {date:'2026-09-20', opponent:'US Simiane Bouc Bel Air', venue:'exterieur', time:'15:00'},
+  {date:'2026-10-04', opponent:'CMS Marignane Basket', venue:'domicile', time:'15:00'},
+  {date:'2026-10-11', opponent:'La Seyne Basket', venue:'exterieur', time:'15:00'},
+  {date:'2026-11-01', opponent:'Cavaillon Espoir Basket Club', venue:'domicile', time:'15:30'},
+  {date:'2026-11-08', opponent:'UA Valettoise Basket', venue:'exterieur', time:'15:00'},
+  {date:'2026-11-15', opponent:'Roquebrune Cap Martin Basket', venue:'exterieur', time:'15:00'},
+  {date:'2026-11-29', opponent:'Avignon Sport Barbiere Basket', venue:'domicile', time:'11:00'},
+  {date:'2026-12-06', opponent:'IE - CTC Les Balcons d\'Azur', venue:'exterieur', time:'15:00'},
+  {date:'2026-12-13', opponent:'SCO Ste Marguerite', venue:'domicile', time:'15:00'},
+  {date:'2027-01-10', opponent:'Stade Laurentin Basket - 1', venue:'domicile', time:'15:00'},
+  {date:'2027-01-17', opponent:'Stade Marseillais UC - 2', venue:'exterieur', time:'15:00'},
+  {date:'2027-01-24', opponent:'US Simiane Bouc Bel Air', venue:'domicile', time:'15:00'},
+  {date:'2027-01-31', opponent:'CMS Marignane Basket', venue:'exterieur', time:'15:00'},
+  {date:'2027-02-07', opponent:'La Seyne Basket', venue:'domicile', time:'15:00'},
+  {date:'2027-02-14', opponent:'Cavaillon Espoir Basket Club', venue:'exterieur', time:'15:00'},
+  {date:'2027-03-14', opponent:'UA Valettoise Basket', venue:'domicile', time:'15:00'},
+  {date:'2027-03-21', opponent:'Roquebrune Cap Martin Basket', venue:'domicile', time:'15:00'},
+  {date:'2027-03-28', opponent:'Avignon Sport Barbiere Basket', venue:'exterieur', time:'15:00'},
+  {date:'2027-04-04', opponent:'IE - CTC Les Balcons d\'Azur', venue:'domicile', time:'15:00'},
+  {date:'2027-04-11', opponent:'SCO Ste Marguerite', venue:'exterieur', time:'15:00'},
+  {date:'2027-04-18', opponent:'Stade Laurentin Basket - 1', venue:'exterieur', time:'15:00'},
+];
+
+const PRF_MATCHES = [
+  {date:'2026-09-21', opponent:'GSE Métropolitains de Nice', venue:'exterieur', time:'21:00'},
+  {date:'2026-09-30', opponent:'US Grassoise', venue:'domicile', time:'21:00'},
+  {date:'2026-10-07', opponent:'Mandelieu La Napoule Basket Avenir', venue:'exterieur', time:'21:00'},
+  {date:'2026-10-14', opponent:'Monaco Basket Association', venue:'domicile', time:'21:00'},
+  {date:'2026-10-22', opponent:'Nice Basket Association Ouest', venue:'exterieur', time:'20:45'},
+  {date:'2026-10-26', opponent:'US Cagnes sur Mer', venue:'exterieur', time:'21:00'},
+  {date:'2026-11-04', opponent:'Stade Laurentin Basket', venue:'domicile', time:'21:00'},
+  {date:'2026-11-08', opponent:'Cavigal Nice Basket 06', venue:'exterieur', time:'11:00'},
+  {date:'2026-11-18', opponent:'Vence Basket Club', venue:'exterieur', time:'21:00'},
+  {date:'2026-12-02', opponent:'Union Sportive Sophia Basket', venue:'domicile', time:'21:00'},
+  {date:'2026-12-09', opponent:'Etoile Saint Barthelemy Nice Basket', venue:'domicile', time:'21:00'},
+  {date:'2027-01-14', opponent:'Roquebrune Cap Martin Basket', venue:'exterieur', time:'21:00'},
+  {date:'2027-01-20', opponent:'GSE Métropolitains de Nice', venue:'domicile', time:'21:00'},
+  {date:'2027-01-29', opponent:'US Grassoise', venue:'exterieur', time:'20:50'},
+  {date:'2027-02-03', opponent:'Mandelieu La Napoule Basket Avenir', venue:'domicile', time:'21:00'},
+  {date:'2027-02-10', opponent:'Monaco Basket Association', venue:'exterieur', time:'21:00'},
+  {date:'2027-02-17', opponent:'Nice Basket Association Ouest', venue:'domicile', time:'21:00'},
+  {date:'2027-02-24', opponent:'US Cagnes sur Mer', venue:'domicile', time:'21:00'},
+  {date:'2027-03-18', opponent:'Stade Laurentin Basket', venue:'exterieur', time:'20:30'},
+  {date:'2027-03-24', opponent:'Cavigal Nice Basket 06', venue:'domicile', time:'21:00'},
+  {date:'2027-03-31', opponent:'Vence Basket Club', venue:'domicile', time:'21:00'},
+  {date:'2027-04-02', opponent:'Union Sportive Sophia Basket', venue:'exterieur', time:'20:45'},
+  {date:'2027-04-19', opponent:'Etoile Saint Barthelemy Nice Basket', venue:'exterieur', time:'21:00'},
+  {date:'2027-04-28', opponent:'Roquebrune Cap Martin Basket', venue:'domicile', time:'21:00'},
+];
+
+const RFU18_MATCHES = [
+  {date:'2026-09-12', opponent:'Cavigal Nice Basket 06 - 2', venue:'exterieur', time:'18:00'},
+  {date:'2026-09-19', opponent:'Monaco Basket Association', venue:'domicile', time:'17:00'},
+  {date:'2026-09-26', opponent:'US Grassoise', venue:'exterieur', time:'18:00'},
+  {date:'2026-10-03', opponent:'Olympique Carros Basket Ball', venue:'domicile', time:'17:00'},
+  {date:'2026-10-10', opponent:'Basket Club des Baous', venue:'exterieur', time:'18:00'},
+];
+
+const RFU15_MATCHES = [
+  {date:'2026-09-19', opponent:'Cavigal Nice Basket 06', venue:'exterieur', time:'14:00'},
+  {date:'2026-09-26', opponent:'IE - CTC Les Balcons d\'Azur', venue:'domicile', time:'15:00'},
+  {date:'2026-10-10', opponent:'Carqueiranne Var Basket', venue:'exterieur', time:'16:00'},
+  {date:'2026-10-17', opponent:'UA Valettoise Basket', venue:'domicile', time:'13:15'},
+];
+
+const RFU13_MATCHES = [
+  {date:'2026-09-12', opponent:'Carqueiranne Var Basket', venue:'domicile', time:'15:00'},
+  {date:'2026-09-19', opponent:'Cavigal Nice Basket 06', venue:'exterieur', time:'14:00'},
+  {date:'2026-09-26', opponent:'Hyeres Toulon Var Basket', venue:'domicile', time:'13:15'},
+  {date:'2026-10-17', opponent:'Stade Laurentin Basket', venue:'domicile', time:'15:00'},
+];
+
+const DFU18_MATCHES = [
+  {date:'2026-10-03', opponent:'Olympique Carros Basket Ball', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket', venue:'domicile'},
+  {date:'2026-10-17', opponent:'Nice Basket Association Ouest', venue:'domicile'},
+  {date:'2026-11-07', opponent:'Olympique Carros Basket Ball', venue:'domicile'},
+  {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket', venue:'exterieur'},
+  {date:'2026-11-21', opponent:'Nice Basket Association Ouest', venue:'exterieur'},
+];
+
+const DFU15_MATCHES = [
+  {date:'2026-10-03', opponent:'Mandelieu La Napoule Basket Avenir', venue:'domicile'},
+  {date:'2026-10-10', opponent:'Cavigal Nice Basket 06', venue:'exterieur'},
+  {date:'2026-10-17', opponent:'US Grassoise - 1', venue:'exterieur'},
+  {date:'2026-11-07', opponent:'Mandelieu La Napoule Basket Avenir', venue:'exterieur'},
+  {date:'2026-11-14', opponent:'Cavigal Nice Basket 06', venue:'domicile'},
+  {date:'2026-11-21', opponent:'US Grassoise - 1', venue:'domicile'},
+];
+
+const DFU11_MATCHES = [
+  {date:'2026-10-03', opponent:'Cavigal Nice Basket 06', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket - 2', venue:'domicile'},
+  {date:'2026-10-17', opponent:'Vence Basket Club', venue:'domicile'},
+  {date:'2026-11-07', opponent:'Cavigal Nice Basket 06', venue:'domicile'},
+  {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket - 2', venue:'exterieur'},
+  {date:'2026-11-21', opponent:'Vence Basket Club', venue:'exterieur'},
+];
+
 const EVENTS = [
   {date:'2026-09-09', label:'Soirée partenaire', type:'event', confirmed:true},
   {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:false},
@@ -690,7 +844,8 @@ function inRange(iso, start, end) { return iso >= start && iso <= end; }
 function stageFor(iso) {
   return STAGES.find(s => inRange(iso, s.start, s.end)) || null;
 }
-const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away','u18d3Home','u18d3Away','u11Home','u11Away','u11d3Home','u11d3Away','u18prHome','u18prAway','u15d2Home','u15d2Away','u13prHome','u13prAway','u13d3Home','u13d3Away']);
+const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away','u18d3Home','u18d3Away','u11Home','u11Away','u11d3Home','u11d3Away','u18prHome','u18prAway','u15d2Home','u15d2Away','u13prHome','u13prAway','u13d3Home','u13d3Away','nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
+const FEM_KINDS = new Set(['nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
 function timeToMinutes(t) { if (!t) return 9999; const [h,m] = t.split(':').map(Number); return h*60+m; }
 function formatTimeShort(t) {
   if (!t) return '';
@@ -703,6 +858,9 @@ const CATEGORY_ARRAYS = {
   n3: MATCHES, pnm: PNM_MATCHES, u15: U15_MATCHES, u18: U18_MATCHES, u13: U13_MATCHES,
   prm: PRM_MATCHES, u21: U21_MATCHES, u18d3: U18D3_MATCHES, u11: U11_MATCHES, u11d3: U11D3_MATCHES,
   u18pr: U18PR_MATCHES, u15d2: U15D2_MATCHES, u13pr: U13PR_MATCHES, u13d3: U13D3_MATCHES,
+  nf2: NF2_MATCHES, pnf: PNF_MATCHES, prf: PRF_MATCHES,
+  rfu18: RFU18_MATCHES, rfu15: RFU15_MATCHES, rfu13: RFU13_MATCHES,
+  dfu18: DFU18_MATCHES, dfu15: DFU15_MATCHES, dfu11: DFU11_MATCHES,
 };
 function loadEdits() {
   try { const raw = localStorage.getItem('azurea-planning-edits'); return raw ? JSON.parse(raw) : {}; }
@@ -776,6 +934,15 @@ const FILTERS = [
   {key:'u13d3', label:'U13 D3', swatch:'background:var(--u13d3)'},
   {key:'u11', label:'U11', swatch:'background:var(--u11)'},
   {key:'u11d3', label:'U11 D3', swatch:'background:var(--u11d3)'},
+  {key:'nf2', label:'NF2', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
+  {key:'pnf', label:'PNF', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
+  {key:'prf', label:'PRF', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
+  {key:'rfu18', label:'RF U18', swatch:'background:var(--fem-tier2);border:1px solid var(--fem-ink)'},
+  {key:'rfu15', label:'RF U15', swatch:'background:var(--fem-tier2);border:1px solid var(--fem-ink)'},
+  {key:'rfu13', label:'RF U13', swatch:'background:var(--fem-tier2);border:1px solid var(--fem-ink)'},
+  {key:'dfu18', label:'DF U18', swatch:'background:var(--fem-tier3);border:1px solid var(--fem-ink)'},
+  {key:'dfu15', label:'DF U15', swatch:'background:var(--fem-tier3);border:1px solid var(--fem-ink)'},
+  {key:'dfu11', label:'DF U11', swatch:'background:var(--fem-tier3);border:1px solid var(--fem-ink)'},
   {key:'school', label:'Vacances scolaires (zone B)', swatch:'background:var(--school-band)'},
   {key:'holiday', label:'Jours fériés', swatch:'background:none;border:1px solid var(--grey)'},
 ];
@@ -943,9 +1110,9 @@ function openPanel(iso, rawItems, rawSchool) {
     panel.appendChild(p);
   }
 
-  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'U15 R', u15Away:'U15 R', u18Home:'U18 R', u18Away:'U18 R', u13Home:'U13 R', u13Away:'U13 R', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R', u18d3Home:'U18 D3', u18d3Away:'U18 D3', u11Home:'U11', u11Away:'U11', u11d3Home:'U11 D3', u11d3Away:'U11 D3', u18prHome:'U18 PR', u18prAway:'U18 PR', u15d2Home:'U15 D2', u15d2Away:'U15 D2', u13prHome:'U13 PR', u13prAway:'U13 PR', u13d3Home:'U13 D3', u13d3Away:'U13 D3'};
-  const COMP_COLOR = {home:'--navy', away:'--navy', pnmHome:'--pnm', pnmAway:'--pnm', u15Home:'--u15', u15Away:'--u15', u18Home:'--u18', u18Away:'--u18', u13Home:'--u13', u13Away:'--u13', prmHome:'--prm', prmAway:'--prm', u21Home:'--u21', u21Away:'--u21', u18d3Home:'--u18d3', u18d3Away:'--u18d3', u11Home:'--u11', u11Away:'--u11', u11d3Home:'--u11d3', u11d3Away:'--u11d3', u18prHome:'--u18pr', u18prAway:'--u18pr', u15d2Home:'--u15d2', u15d2Away:'--u15d2', u13prHome:'--u13pr', u13prAway:'--u13pr', u13d3Home:'--u13d3', u13d3Away:'--u13d3'};
-  const COMP_TINT  = {home:'--navy-tint', away:'--navy-tint', pnmHome:'--pnm-tint', pnmAway:'--pnm-tint', u15Home:'--u15-tint', u15Away:'--u15-tint', u18Home:'--u18-tint', u18Away:'--u18-tint', u13Home:'--u13-tint', u13Away:'--u13-tint', prmHome:'--prm-tint', prmAway:'--prm-tint', u21Home:'--u21-tint', u21Away:'--u21-tint', u18d3Home:'--u18d3-tint', u18d3Away:'--u18d3-tint', u11Home:'--u11-tint', u11Away:'--u11-tint', u11d3Home:'--u11d3-tint', u11d3Away:'--u11d3-tint', u18prHome:'--u18pr-tint', u18prAway:'--u18pr-tint', u15d2Home:'--u15d2-tint', u15d2Away:'--u15d2-tint', u13prHome:'--u13pr-tint', u13prAway:'--u13pr-tint', u13d3Home:'--u13d3-tint', u13d3Away:'--u13d3-tint'};
+  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'U15 R', u15Away:'U15 R', u18Home:'U18 R', u18Away:'U18 R', u13Home:'U13 R', u13Away:'U13 R', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R', u18d3Home:'U18 D3', u18d3Away:'U18 D3', u11Home:'U11', u11Away:'U11', u11d3Home:'U11 D3', u11d3Away:'U11 D3', u18prHome:'U18 PR', u18prAway:'U18 PR', u15d2Home:'U15 D2', u15d2Away:'U15 D2', u13prHome:'U13 PR', u13prAway:'U13 PR', u13d3Home:'U13 D3', u13d3Away:'U13 D3', nf2Home:'NF2', nf2Away:'NF2', pnfHome:'PNF', pnfAway:'PNF', prfHome:'PRF', prfAway:'PRF', rfu18Home:'RF U18', rfu18Away:'RF U18', rfu15Home:'RF U15', rfu15Away:'RF U15', rfu13Home:'RF U13', rfu13Away:'RF U13', dfu18Home:'DF U18', dfu18Away:'DF U18', dfu15Home:'DF U15', dfu15Away:'DF U15', dfu11Home:'DF U11', dfu11Away:'DF U11'};
+  const COMP_COLOR = {home:'--navy', away:'--navy', pnmHome:'--pnm', pnmAway:'--pnm', u15Home:'--u15', u15Away:'--u15', u18Home:'--u18', u18Away:'--u18', u13Home:'--u13', u13Away:'--u13', prmHome:'--prm', prmAway:'--prm', u21Home:'--u21', u21Away:'--u21', u18d3Home:'--u18d3', u18d3Away:'--u18d3', u11Home:'--u11', u11Away:'--u11', u11d3Home:'--u11d3', u11d3Away:'--u11d3', u18prHome:'--u18pr', u18prAway:'--u18pr', u15d2Home:'--u15d2', u15d2Away:'--u15d2', u13prHome:'--u13pr', u13prAway:'--u13pr', u13d3Home:'--u13d3', u13d3Away:'--u13d3', nf2Home:'--fem-ink', nf2Away:'--fem-ink', pnfHome:'--fem-ink', pnfAway:'--fem-ink', prfHome:'--fem-ink', prfAway:'--fem-ink', rfu18Home:'--fem-ink', rfu18Away:'--fem-ink', rfu15Home:'--fem-ink', rfu15Away:'--fem-ink', rfu13Home:'--fem-ink', rfu13Away:'--fem-ink', dfu18Home:'--fem-ink', dfu18Away:'--fem-ink', dfu15Home:'--fem-ink', dfu15Away:'--fem-ink', dfu11Home:'--fem-ink', dfu11Away:'--fem-ink'};
+  const COMP_TINT  = {home:'--navy-tint', away:'--navy-tint', pnmHome:'--pnm-tint', pnmAway:'--pnm-tint', u15Home:'--u15-tint', u15Away:'--u15-tint', u18Home:'--u18-tint', u18Away:'--u18-tint', u13Home:'--u13-tint', u13Away:'--u13-tint', prmHome:'--prm-tint', prmAway:'--prm-tint', u21Home:'--u21-tint', u21Away:'--u21-tint', u18d3Home:'--u18d3-tint', u18d3Away:'--u18d3-tint', u11Home:'--u11-tint', u11Away:'--u11-tint', u11d3Home:'--u11d3-tint', u11d3Away:'--u11d3-tint', u18prHome:'--u18pr-tint', u18prAway:'--u18pr-tint', u15d2Home:'--u15d2-tint', u15d2Away:'--u15d2-tint', u13prHome:'--u13pr-tint', u13prAway:'--u13pr-tint', u13d3Home:'--u13d3-tint', u13d3Away:'--u13d3-tint', nf2Home:'--fem-tier1', nf2Away:'--fem-tier1', pnfHome:'--fem-tier1', pnfAway:'--fem-tier1', prfHome:'--fem-tier1', prfAway:'--fem-tier1', rfu18Home:'--fem-tier2', rfu18Away:'--fem-tier2', rfu15Home:'--fem-tier2', rfu15Away:'--fem-tier2', rfu13Home:'--fem-tier2', rfu13Away:'--fem-tier2', dfu18Home:'--fem-tier3', dfu18Away:'--fem-tier3', dfu15Home:'--fem-tier3', dfu15Away:'--fem-tier3', dfu11Home:'--fem-tier3', dfu11Away:'--fem-tier3'};
   function isHomeKind(k) { return k === 'home' || k.endsWith('Home'); }
 
   const matches = items.filter(it => MATCH_KINDS.has(it.kind));
@@ -965,7 +1132,7 @@ function openPanel(iso, rawItems, rawSchool) {
     tag.className = 'mc-tag';
     tag.style.background = `var(${COMP_TINT[it.kind]})`;
     tag.style.color = `var(${COMP_COLOR[it.kind]})`;
-    tag.textContent = COMP_LABEL[it.kind];
+    tag.textContent = (FEM_KINDS.has(it.kind) && isHomeKind(it.kind) ? '(Foch) ' : '') + COMP_LABEL[it.kind];
     top.appendChild(time);
     top.appendChild(tag);
     card.appendChild(top);
