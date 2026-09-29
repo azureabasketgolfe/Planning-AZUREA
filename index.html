@@ -29,8 +29,8 @@
     --stage-text: #FFFFFF;
     --pnm: #3E7C74;
     --pnm-tint: #E1EDEA;
-    --u15: #A85C7A;
-    --u15-tint: #F2E3EA;
+    --u15: #8B5E3C;
+    --u15-tint: #F1E6DB;
     --u18: #3E6A8F;
     --u18-tint: #E1EAF1;
     --u13: #4A7C3F;
@@ -43,8 +43,8 @@
     --u18d3-tint: #E9F0F6;
     --u18pr: #5C87AA;
     --u18pr-tint: #E5EEF3;
-    --u15d2: #C48BA3;
-    --u15d2-tint: #F7EEF1;
+    --u15d2: #B08A66;
+    --u15d2-tint: #F6EFE7;
     --u13pr: #6B9960;
     --u13pr-tint: #EAF1E7;
     --u13d3: #8DB584;
@@ -81,8 +81,8 @@
       --stage-text: #FFF6E5;
       --pnm: #6FB3A8;
       --pnm-tint: #1B2E2A;
-      --u15: #D98CA0;
-      --u15-tint: #341F27;
+      --u15: #D9AE86;
+      --u15-tint: #2E2419;
       --u18: #8FB3D9;
       --u18-tint: #1B2733;
       --u13: #8FC17F;
@@ -95,8 +95,8 @@
       --u18d3-tint: #22303F;
       --u18pr: #A0C0DE;
       --u18pr-tint: #1F2C39;
-      --u15d2: #E6B3C2;
-      --u15d2-tint: #3A2530;
+      --u15d2: #E8CCAE;
+      --u15d2-tint: #332A1E;
       --u13pr: #A2CD98;
       --u13pr-tint: #283A24;
       --u13d3: #B5D9AC;
@@ -133,8 +133,8 @@
     --stage-text: #FFF6E5;
     --pnm: #6FB3A8;
     --pnm-tint: #1B2E2A;
-    --u15: #D98CA0;
-    --u15-tint: #341F27;
+    --u15: #D9AE86;
+    --u15-tint: #2E2419;
     --u18: #8FB3D9;
     --u18-tint: #1B2733;
     --u13: #8FC17F;
@@ -147,8 +147,8 @@
     --u18d3-tint: #22303F;
     --u18pr: #A0C0DE;
     --u18pr-tint: #1F2C39;
-    --u15d2: #E6B3C2;
-    --u15d2-tint: #3A2530;
+    --u15d2: #E8CCAE;
+    --u15d2-tint: #332A1E;
     --u13pr: #A2CD98;
     --u13pr-tint: #283A24;
     --u13d3: #B5D9AC;
@@ -217,6 +217,11 @@
   .mc-edited { font-size: 10px; color: var(--ink-soft); font-style: italic; }
   .match-card.editable { cursor: pointer; border-radius: 6px; }
   .match-card.editable:hover { background: var(--navy-tint); }
+  .gym-block { border-left: 3px solid var(--navy); padding-left: 8px; margin-top: 4px; }
+  .gym-block + .gym-block { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 8px; }
+  .gym-block.unassigned { border-left-color: var(--line); }
+  .gym-title { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); margin: 2px 0 2px; }
+  .gym-block.unassigned .gym-title { color: var(--ink-soft); }
   .mc-edit-hint { font-size: 10.5px; color: var(--ink-soft); margin: 0 0 8px; }
   .edit-form { margin-top: 8px; padding: 10px; border: 1px solid var(--navy); border-radius: 8px; background: var(--bg-panel); cursor: default; display: grid; gap: 8px; }
   .edit-form label { display: grid; gap: 3px; font-size: 11.5px; color: var(--ink-soft); }
@@ -890,6 +895,10 @@ function saveEdits() {
   try { localStorage.setItem('azurea-planning-edits', JSON.stringify(EDITS)); } catch (e) {}
 }
 let EDITS = loadEdits();
+const GYMS = [{key:'allinei', label:'Allinei'}, {key:'salusse', label:'Salusse Santoni'}];
+function gymLabel(k) { const g = GYMS.find(x => x.key === k); return g ? g.label : null; }
+const FEM_CATS = new Set(['nf2','pnf','prf','rfu18','rfu15','rfu13','dfu18','dfu15','dfu11']);
+function defaultGym(cat) { return FEM_CATS.has(cat) ? 'salusse' : 'allinei'; }
 function kindFor(cat, venue) {
   const isHome = venue === 'domicile';
   return cat === 'n3' ? (isHome ? 'home' : 'away') : cat + (isHome ? 'Home' : 'Away');
@@ -908,6 +917,7 @@ function allMatches() {
         note: e.note !== undefined ? e.note : m.note,
         forfeit: !!e.forfeit,
         edited: !!EDITS[id],
+        gym: e.gym !== undefined ? e.gym : (m.gym || defaultGym(cat)),
       });
     });
   });
@@ -917,14 +927,14 @@ function allMatches() {
 function entriesFor(iso) {
   const out = [];
   const dayMatches = allMatches().filter(m => m.date === iso);
-  const n3Items = dayMatches.filter(m => m.cat === 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited}));
+  const n3Items = dayMatches.filter(m => m.cat === 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym}));
   out.push(...n3Items);
   EVENTS.filter(x => x.date === iso).forEach(x => out.push({kind: x.type, label: x.label, confirmed: x.confirmed}));
   const stage = stageFor(iso);
   if (stage) out.push({kind: 'stage', label: stage.label});
   HOLIDAYS.filter(x => x.date === iso).forEach(x => out.push({kind: 'holiday', label: x.label}));
 
-  let secondary = dayMatches.filter(m => m.cat !== 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited}));
+  let secondary = dayMatches.filter(m => m.cat !== 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym}));
   if (n3Items.length === 0) {
     secondary.sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
   }
@@ -1232,6 +1242,18 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     selVenue.value = isHomeKind(it.kind) ? 'domicile' : 'exterieur';
     lblVenue.appendChild(selVenue);
 
+    const lblGym = document.createElement('label');
+    lblGym.textContent = 'Gymnase';
+    const selGym = document.createElement('select');
+    [['','Non précisé']].concat(GYMS.map(g => [g.key, g.label])).forEach(([v, t]) => {
+      const o = document.createElement('option'); o.value = v; o.textContent = t; selGym.appendChild(o);
+    });
+    selGym.value = it.gym || '';
+    lblGym.appendChild(selGym);
+    const syncGym = () => { lblGym.style.display = selVenue.value === 'domicile' ? 'grid' : 'none'; };
+    selVenue.onchange = syncGym;
+    syncGym();
+
     const lblForfeit = document.createElement('label');
     lblForfeit.className = 'check';
     const inForfeit = document.createElement('input');
@@ -1246,9 +1268,10 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     bSave.onclick = () => {
       const nd = inDate.value || iso;
       const nt = inTime.value || null;
-      const same = nd === base.date && (nt || null) === (base.time || null) && selVenue.value === base.venue && !inForfeit.checked;
+      const gym = selVenue.value === 'domicile' ? (selGym.value || null) : null;
+      const same = nd === base.date && (nt || null) === (base.time || null) && selVenue.value === base.venue && (gym || null) === (base.gym || null) && !inForfeit.checked;
       if (same) delete EDITS[it.id];
-      else EDITS[it.id] = {date: nd, time: nt, venue: selVenue.value, forfeit: inForfeit.checked};
+      else EDITS[it.id] = {date: nd, time: nt, venue: selVenue.value, forfeit: inForfeit.checked, gym: gym};
       saveEdits();
       refreshCalendar();
       const msg = nd !== iso ? 'Match déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
@@ -1274,6 +1297,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     form.appendChild(lblDate);
     form.appendChild(lblTime);
     form.appendChild(lblVenue);
+    form.appendChild(lblGym);
     form.appendChild(lblForfeit);
     form.appendChild(actions);
     return form;
@@ -1290,7 +1314,18 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     const homeCol = document.createElement('div');
     homeCol.className = 'match-col';
     const homeH = document.createElement('h4'); homeH.textContent = 'Domicile'; homeCol.appendChild(homeH);
-    homeMatches.forEach(it => homeCol.appendChild(buildMatchCard(it)));
+    const groups = GYMS.map(g => ({key: g.key, label: g.label, list: homeMatches.filter(it => it.gym === g.key)}));
+    groups.push({key: '', label: 'Gymnase non précisé', list: homeMatches.filter(it => !gymLabel(it.gym))});
+    groups.filter(g => g.list.length).forEach(g => {
+      const block = document.createElement('div');
+      block.className = 'gym-block' + (g.key ? '' : ' unassigned');
+      const gt = document.createElement('div');
+      gt.className = 'gym-title';
+      gt.textContent = g.label;
+      block.appendChild(gt);
+      g.list.forEach(it => block.appendChild(buildMatchCard(it)));
+      homeCol.appendChild(block);
+    });
     cols.appendChild(homeCol);
 
     const awayCol = document.createElement('div');
@@ -1419,6 +1454,7 @@ function describeEdit(id) {
   if (e.date && e.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(e.date));
   if (e.time !== undefined && (e.time || null) !== (base.time || null)) parts.push('heure ' + (base.time ? formatTimeShort(base.time) : 'non renseignée') + ' → ' + (e.time ? formatTimeShort(e.time) : 'non renseignée'));
   if (e.venue && e.venue !== base.venue) parts.push('lieu ' + (base.venue === 'domicile' ? 'domicile' : 'extérieur') + ' → ' + (e.venue === 'domicile' ? 'domicile' : 'extérieur'));
+  if (e.gym !== undefined && (e.gym || null) !== (base.gym || null)) parts.push('gymnase ' + (gymLabel(e.gym) || 'non précisé'));
   if (e.forfeit) parts.push('FORFAIT');
   return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : ' + parts.join(', ');
 }
