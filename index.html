@@ -477,7 +477,7 @@
     </div>
   </header>
 
-  <p class="updated-note">Dernière mise à jour : 28 septembre 2026</p>
+  <p class="updated-note">Dernière mise à jour : 30 septembre 2026</p>
 
   <div class="view-switch">
     <button class="view-btn active" id="btn-month-view" onclick="setView('month')">Par mois</button>
@@ -932,6 +932,7 @@ function allMatches() {
     CATEGORY_ARRAYS[cat].forEach((m, idx) => {
       const id = cat + ':' + idx;
       const e = EDITS[id] || {};
+      if (e.deleted) return;
       out.push({
         id, cat, opponent: m.opponent,
         date: e.date || m.date,
@@ -968,7 +969,7 @@ function entriesFor(iso) {
   const n3Items = dayMatches.filter(m => m.cat === 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
   out.push(...n3Items);
   EVENTS.filter(x => x.date === iso).forEach(x => out.push({kind: x.type, label: x.label, confirmed: x.confirmed}));
-  ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: 'event', label: x.label, confirmed: x.confirmed, id: 'addedEvent:' + idx, added: true}); });
+  ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: x.type === 'stage' ? 'stage' : 'event', label: x.label, confirmed: x.confirmed, time: x.startTime || undefined, id: 'addedEvent:' + idx, added: true}); });
   const stage = stageFor(iso);
   if (stage) out.push({kind: 'stage', label: stage.label});
   HOLIDAYS.filter(x => x.date === iso).forEach(x => out.push({kind: 'holiday', label: x.label}));
@@ -994,16 +995,16 @@ const FILTERS = [
   {key:'pnm', label:'PNM', swatch:'background:var(--pnm)'},
   {key:'prm', label:'PRM', swatch:'background:var(--prm)'},
   {key:'u21', label:'U21 R', swatch:'background:var(--u21)'},
-  {key:'u18', label:'U18 R', swatch:'background:var(--u18)'},
-  {key:'u18pr', label:'U18 PR', swatch:'background:var(--u18pr)'},
-  {key:'u18d3', label:'U18 D3', swatch:'background:var(--u18d3)'},
-  {key:'u15', label:'U15 R', swatch:'background:var(--u15)'},
-  {key:'u15d2', label:'U15 D2', swatch:'background:var(--u15d2)'},
-  {key:'u13', label:'U13 R', swatch:'background:var(--u13)'},
-  {key:'u13pr', label:'U13 PR', swatch:'background:var(--u13pr)'},
-  {key:'u13d3', label:'U13 D3', swatch:'background:var(--u13d3)'},
-  {key:'u11', label:'U11', swatch:'background:var(--u11)'},
-  {key:'u11d3', label:'U11 D3', swatch:'background:var(--u11d3)'},
+  {key:'u18', label:'RMU18', swatch:'background:var(--u18)'},
+  {key:'u18pr', label:'PRMU18', swatch:'background:var(--u18pr)'},
+  {key:'u18d3', label:'DMU18-3', swatch:'background:var(--u18d3)'},
+  {key:'u15', label:'RMU15', swatch:'background:var(--u15)'},
+  {key:'u15d2', label:'DMU15-2', swatch:'background:var(--u15d2)'},
+  {key:'u13', label:'RMU13', swatch:'background:var(--u13)'},
+  {key:'u13pr', label:'PRMU13', swatch:'background:var(--u13pr)'},
+  {key:'u13d3', label:'DMU13-3', swatch:'background:var(--u13d3)'},
+  {key:'u11', label:'DMU11', swatch:'background:var(--u11)'},
+  {key:'u11d3', label:'DMU11-3', swatch:'background:var(--u11d3)'},
   {key:'nf2', label:'NF2', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
   {key:'pnf', label:'PNF', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
   {key:'prf', label:'PRF', swatch:'background:var(--fem-tier1);border:1px solid var(--fem-ink)'},
@@ -1095,7 +1096,7 @@ function buildMonths() {
           if (it.kind === 'event' && it.confirmed === false) cls += ' unconfirmed';
           if (it.forfeit) cls += ' forfeit';
           c.className = cls;
-          c.textContent = MATCH_KINDS.has(it.kind) && it.time ? `${formatTimeShort(it.time)} ${it.label}` : it.label;
+          c.textContent = (MATCH_KINDS.has(it.kind) || it.kind === 'event' || it.kind === 'stage') && it.time ? `${formatTimeShort(it.time)} ${it.label}` : it.label;
           if (it.forfeit) c.title = 'Forfait';
           chips.appendChild(c);
         });
@@ -1193,7 +1194,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     panel.appendChild(p);
   }
 
-  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'U15 R', u15Away:'U15 R', u18Home:'U18 R', u18Away:'U18 R', u13Home:'U13 R', u13Away:'U13 R', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R', u18d3Home:'U18 D3', u18d3Away:'U18 D3', u11Home:'U11', u11Away:'U11', u11d3Home:'U11 D3', u11d3Away:'U11 D3', u18prHome:'U18 PR', u18prAway:'U18 PR', u15d2Home:'U15 D2', u15d2Away:'U15 D2', u13prHome:'U13 PR', u13prAway:'U13 PR', u13d3Home:'U13 D3', u13d3Away:'U13 D3', nf2Home:'NF2', nf2Away:'NF2', pnfHome:'PNF', pnfAway:'PNF', prfHome:'PRF', prfAway:'PRF', rfu18Home:'RF U18', rfu18Away:'RF U18', rfu15Home:'RF U15', rfu15Away:'RF U15', rfu13Home:'RF U13', rfu13Away:'RF U13', dfu18Home:'DF U18', dfu18Away:'DF U18', dfu15Home:'DF U15', dfu15Away:'DF U15', dfu11Home:'DF U11', dfu11Away:'DF U11'};
+  const COMP_LABEL = {home:'N3', away:'N3', pnmHome:'PNM', pnmAway:'PNM', u15Home:'RMU15', u15Away:'RMU15', u18Home:'RMU18', u18Away:'RMU18', u13Home:'RMU13', u13Away:'RMU13', prmHome:'PRM', prmAway:'PRM', u21Home:'U21 R', u21Away:'U21 R', u18d3Home:'DMU18-3', u18d3Away:'DMU18-3', u11Home:'DMU11', u11Away:'DMU11', u11d3Home:'DMU11-3', u11d3Away:'DMU11-3', u18prHome:'PRMU18', u18prAway:'PRMU18', u15d2Home:'DMU15-2', u15d2Away:'DMU15-2', u13prHome:'PRMU13', u13prAway:'PRMU13', u13d3Home:'DMU13-3', u13d3Away:'DMU13-3', nf2Home:'NF2', nf2Away:'NF2', pnfHome:'PNF', pnfAway:'PNF', prfHome:'PRF', prfAway:'PRF', rfu18Home:'RF U18', rfu18Away:'RF U18', rfu15Home:'RF U15', rfu15Away:'RF U15', rfu13Home:'RF U13', rfu13Away:'RF U13', dfu18Home:'DF U18', dfu18Away:'DF U18', dfu15Home:'DF U15', dfu15Away:'DF U15', dfu11Home:'DF U11', dfu11Away:'DF U11'};
   const COMP_COLOR = {home:'--navy', away:'--navy', pnmHome:'--pnm', pnmAway:'--pnm', u15Home:'--u15', u15Away:'--u15', u18Home:'--u18', u18Away:'--u18', u13Home:'--u13', u13Away:'--u13', prmHome:'--prm', prmAway:'--prm', u21Home:'--u21', u21Away:'--u21', u18d3Home:'--u18d3', u18d3Away:'--u18d3', u11Home:'--u11', u11Away:'--u11', u11d3Home:'--u11d3', u11d3Away:'--u11d3', u18prHome:'--u18pr', u18prAway:'--u18pr', u15d2Home:'--u15d2', u15d2Away:'--u15d2', u13prHome:'--u13pr', u13prAway:'--u13pr', u13d3Home:'--u13d3', u13d3Away:'--u13d3', nf2Home:'--fem-ink', nf2Away:'--fem-ink', pnfHome:'--fem-ink', pnfAway:'--fem-ink', prfHome:'--fem-ink', prfAway:'--fem-ink', rfu18Home:'--fem-ink', rfu18Away:'--fem-ink', rfu15Home:'--fem-ink', rfu15Away:'--fem-ink', rfu13Home:'--fem-ink', rfu13Away:'--fem-ink', dfu18Home:'--fem-ink', dfu18Away:'--fem-ink', dfu15Home:'--fem-ink', dfu15Away:'--fem-ink', dfu11Home:'--fem-ink', dfu11Away:'--fem-ink'};
   const COMP_TINT  = {home:'--navy-tint', away:'--navy-tint', pnmHome:'--pnm-tint', pnmAway:'--pnm-tint', u15Home:'--u15-tint', u15Away:'--u15-tint', u18Home:'--u18-tint', u18Away:'--u18-tint', u13Home:'--u13-tint', u13Away:'--u13-tint', prmHome:'--prm-tint', prmAway:'--prm-tint', u21Home:'--u21-tint', u21Away:'--u21-tint', u18d3Home:'--u18d3-tint', u18d3Away:'--u18d3-tint', u11Home:'--u11-tint', u11Away:'--u11-tint', u11d3Home:'--u11d3-tint', u11d3Away:'--u11d3-tint', u18prHome:'--u18pr-tint', u18prAway:'--u18pr-tint', u15d2Home:'--u15d2-tint', u15d2Away:'--u15d2-tint', u13prHome:'--u13pr-tint', u13prAway:'--u13pr-tint', u13d3Home:'--u13d3-tint', u13d3Away:'--u13d3-tint', nf2Home:'--fem-tier1', nf2Away:'--fem-tier1', pnfHome:'--fem-tier1', pnfAway:'--fem-tier1', prfHome:'--fem-tier1', prfAway:'--fem-tier1', rfu18Home:'--fem-tier2', rfu18Away:'--fem-tier2', rfu15Home:'--fem-tier2', rfu15Away:'--fem-tier2', rfu13Home:'--fem-tier2', rfu13Away:'--fem-tier2', dfu18Home:'--fem-tier3', dfu18Away:'--fem-tier3', dfu15Home:'--fem-tier3', dfu15Away:'--fem-tier3', dfu11Home:'--fem-tier3', dfu11Away:'--fem-tier3'};
   function isHomeKind(k) { return k === 'home' || k.endsWith('Home'); }
@@ -1333,6 +1334,17 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       };
       actions.appendChild(bReset);
     }
+    if (!it.added) {
+      const bDeleteBase = document.createElement('button');
+      bDeleteBase.textContent = 'Supprimer';
+      bDeleteBase.onclick = () => {
+        EDITS[it.id] = {deleted: true};
+        saveEdits();
+        refreshCalendar();
+        openPanel(iso, entriesFor(iso), schoolLabelFor(iso), 'Match supprimé de l\'affichage (récupérable via le récapitulatif → Tout réinitialiser, ou en me le signalant).');
+      };
+      actions.appendChild(bDeleteBase);
+    }
     if (it.added) {
       const bDelete = document.createElement('button');
       bDelete.textContent = 'Supprimer ce match';
@@ -1409,7 +1421,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     row.appendChild(tag);
     const label = document.createElement('div');
     label.className = 'label';
-    label.textContent = it.label;
+    label.textContent = it.time ? `${formatTimeShort(it.time)} · ${it.label}` : it.label;
     row.appendChild(label);
     if (it.note) {
       const note = document.createElement('div');
@@ -1445,7 +1457,7 @@ function openAddModal() {
   const lblType = document.createElement('label');
   lblType.textContent = 'Type';
   const selType = document.createElement('select');
-  [['match', 'Match'], ['event', 'Événement club']].forEach(([v, t]) => {
+  [['match', 'Match'], ['event', 'Événement club'], ['stage', 'Stage']].forEach(([v, t]) => {
     const o = document.createElement('option'); o.value = v; o.textContent = t; selType.appendChild(o);
   });
   lblType.appendChild(selType);
@@ -1517,12 +1529,21 @@ function openAddModal() {
         gym: selVenue.value === 'domicile' ? (selGym.value || null) : null,
       });
     } else {
+      const isStage = selType.value === 'stage';
       const lblLabel = document.createElement('label');
-      lblLabel.textContent = 'Libellé de l\'événement';
+      lblLabel.textContent = isStage ? 'Libellé du stage' : 'Libellé de l\'événement';
       const inLabel = document.createElement('input');
-      inLabel.type = 'text'; inLabel.placeholder = 'Ex. Loto du club';
+      inLabel.type = 'text'; inLabel.placeholder = isStage ? 'Ex. Stage vacances de la Toussaint' : 'Ex. Loto du club';
+      if (isStage) inLabel.value = 'Stage';
       lblLabel.appendChild(inLabel);
       body.appendChild(lblLabel);
+
+      const lblStart = document.createElement('label');
+      lblStart.textContent = 'Heure de début (facultatif)';
+      const inStart = document.createElement('input');
+      inStart.type = 'time';
+      lblStart.appendChild(inStart);
+      body.appendChild(lblStart);
 
       const lblConf = document.createElement('label');
       lblConf.className = 'check';
@@ -1532,8 +1553,8 @@ function openAddModal() {
       lblConf.appendChild(document.createTextNode('Non confirmé (affiché en rayures)'));
       body.appendChild(lblConf);
 
-      body.dataset.kind = 'event';
-      body._getValue = () => ({ date: inDate.value, label: inLabel.value.trim(), confirmed: !inConf.checked });
+      body.dataset.kind = selType.value;
+      body._getValue = () => ({ date: inDate.value, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inStart.value || null });
     }
   }
   selType.onchange = renderBody;
@@ -1552,7 +1573,7 @@ function openAddModal() {
       saveAddedMatches();
     } else {
       if (!v.label) { alert('Merci de saisir un libellé.'); return; }
-      ADDED_EVENTS.push({date: v.date, label: v.label, confirmed: v.confirmed});
+      ADDED_EVENTS.push({date: v.date, label: v.label, confirmed: v.confirmed, startTime: v.startTime, type: body.dataset.kind});
       saveAddedEvents();
     }
     refreshCalendar();
@@ -1645,11 +1666,12 @@ function fmtLong(iso) {
   const [y,m,d] = iso.split('-').map(Number);
   return d + ' ' + FULL_MONTH[m] + ' ' + y;
 }
-const CAT_LABEL = {n3:'N3', pnm:'PNM', u15:'U15 R', u18:'U18 R', u13:'U13 R', prm:'PRM', u21:'U21 R', u18d3:'U18 D3', u11:'U11', u11d3:'U11 D3', u18pr:'U18 PR', u15d2:'U15 D2', u13pr:'U13 PR', u13d3:'U13 D3', nf2:'NF2', pnf:'PNF', prf:'PRF', rfu18:'RF U18', rfu15:'RF U15', rfu13:'RF U13', dfu18:'DF U18', dfu15:'DF U15', dfu11:'DF U11'};
+const CAT_LABEL = {n3:'N3', pnm:'PNM', u15:'RMU15', u18:'RMU18', u13:'RMU13', prm:'PRM', u21:'U21 R', u18d3:'DMU18-3', u11:'DMU11', u11d3:'DMU11-3', u18pr:'PRMU18', u15d2:'DMU15-2', u13pr:'PRMU13', u13d3:'DMU13-3', nf2:'NF2', pnf:'PNF', prf:'PRF', rfu18:'RF U18', rfu15:'RF U15', rfu13:'RF U13', dfu18:'DF U18', dfu15:'DF U15', dfu11:'DF U11'};
 function describeEdit(id) {
   const [cat, idxStr] = id.split(':');
   const base = CATEGORY_ARRAYS[cat][parseInt(idxStr, 10)];
   const e = EDITS[id];
+  if (e.deleted) return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : SUPPRIMÉ';
   const parts = [];
   if (e.date && e.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(e.date));
   if (e.time !== undefined && (e.time || null) !== (base.time || null)) parts.push('heure ' + (base.time ? formatTimeShort(base.time) : 'non renseignée') + ' → ' + (e.time ? formatTimeShort(e.time) : 'non renseignée'));
