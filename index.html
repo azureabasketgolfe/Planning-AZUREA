@@ -433,6 +433,8 @@
   .panel .dow-full { color: var(--ink-soft); font-size: 13px; margin-bottom: 16px; text-transform: capitalize; }
   .panel .entry { padding: 10px 0; border-top: 1px solid var(--line); }
   .panel .entry:first-of-type { border-top: none; }
+  .panel .entry.editable-entry { cursor: pointer; border-radius: 6px; }
+  .panel .entry.editable-entry:hover { background: var(--navy-tint); }
   .panel .entry .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-bottom: 5px; font-weight: 600; }
   .panel .entry .tag.home { background: var(--navy); color: #fff; }
   .panel .entry .tag.away { background: var(--azure-tint); color: var(--azure); }
@@ -477,7 +479,7 @@
     </div>
   </header>
 
-  <p class="updated-note">Dernière mise à jour : 30 septembre 2026</p>
+  <p class="updated-note">Dernière mise à jour : 1 octobre 2026</p>
 
   <div class="view-switch">
     <button class="view-btn active" id="btn-month-view" onclick="setView('month')">Par mois</button>
@@ -874,7 +876,17 @@ function isoDate(y,m,d) {
 }
 function inRange(iso, start, end) { return iso >= start && iso <= end; }
 function stageFor(iso) {
-  return STAGES.find(s => inRange(iso, s.start, s.end)) || null;
+  for (let idx = 0; idx < STAGES.length; idx++) {
+    const id = 'stageRange:' + idx;
+    const o = SEDITS[id] || {};
+    if (o.deleted) continue;
+    const start = o.start || STAGES[idx].start;
+    const end = o.end || STAGES[idx].end;
+    if (inRange(iso, start, end)) {
+      return {label: o.label !== undefined ? o.label : STAGES[idx].label, time: o.time, id, sedited: !!SEDITS[id]};
+    }
+  }
+  return null;
 }
 const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away','u18d3Home','u18d3Away','u11Home','u11Away','u11d3Home','u11d3Away','u18prHome','u18prAway','u15d2Home','u15d2Away','u13prHome','u13prAway','u13d3Home','u13d3Away','nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
 const FEM_KINDS = new Set(['nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
@@ -902,6 +914,14 @@ function saveEdits() {
   try { localStorage.setItem('azurea-planning-edits', JSON.stringify(EDITS)); } catch (e) {}
 }
 let EDITS = loadEdits();
+function loadSEdits() {
+  try { const raw = localStorage.getItem('azurea-planning-sedits'); return raw ? JSON.parse(raw) : {}; }
+  catch (e) { return {}; }
+}
+function saveSEdits() {
+  try { localStorage.setItem('azurea-planning-sedits', JSON.stringify(SEDITS)); } catch (e) {}
+}
+let SEDITS = loadSEdits();
 function loadAddedMatches() {
   try { const raw = localStorage.getItem('azurea-planning-added-matches'); return raw ? JSON.parse(raw) : []; }
   catch (e) { return []; }
@@ -968,10 +988,17 @@ function entriesFor(iso) {
   const dayMatches = allMatches().filter(m => m.date === iso);
   const n3Items = dayMatches.filter(m => m.cat === 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
   out.push(...n3Items);
-  EVENTS.filter(x => x.date === iso).forEach(x => out.push({kind: x.type, label: x.label, confirmed: x.confirmed}));
+  EVENTS.forEach((x, idx) => {
+    const id = 'event:' + idx;
+    const o = SEDITS[id] || {};
+    if (o.deleted) return;
+    const date = o.date || x.date;
+    if (date !== iso) return;
+    out.push({kind: x.type, label: o.label !== undefined ? o.label : x.label, confirmed: o.confirmed !== undefined ? o.confirmed : x.confirmed, time: o.time, id, sedited: !!SEDITS[id]});
+  });
   ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: x.type === 'stage' ? 'stage' : 'event', label: x.label, confirmed: x.confirmed, time: x.startTime || undefined, id: 'addedEvent:' + idx, added: true}); });
   const stage = stageFor(iso);
-  if (stage) out.push({kind: 'stage', label: stage.label});
+  if (stage) out.push({kind: 'stage', label: stage.label, time: stage.time, id: stage.id, sedited: stage.sedited});
   HOLIDAYS.filter(x => x.date === iso).forEach(x => out.push({kind: 'holiday', label: x.label}));
 
   let secondary = dayMatches.filter(m => m.cat !== 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
@@ -1429,8 +1456,129 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       note.textContent = it.note;
       row.appendChild(note);
     }
+    if (it.edited === undefined && it.sedited) {
+      const ed = document.createElement('div');
+      ed.className = 'mc-edited';
+      ed.textContent = 'modifié';
+      row.appendChild(ed);
+    }
+    if ((it.kind === 'event' || it.kind === 'stage') && it.id) {
+      row.classList.add('editable-entry');
+      row.onclick = (e) => {
+        if (e.target.closest('.edit-form')) return;
+        const existing = row.querySelector('.edit-form');
+        if (existing) { existing.remove(); return; }
+        row.appendChild(buildSimpleEditForm(it, iso));
+      };
+    }
     panel.appendChild(row);
   });
+
+  function buildSimpleEditForm(it, iso) {
+    const isAdded = !!it.added;
+    const isRange = !isAdded && it.id.startsWith('stageRange:');
+    const idx = parseInt(it.id.split(':')[1], 10);
+    const base = isAdded ? ADDED_EVENTS[idx] : (isRange ? STAGES[idx] : EVENTS[idx]);
+    const form = document.createElement('div');
+    form.className = 'edit-form';
+
+    const lblLabel = document.createElement('label');
+    lblLabel.textContent = 'Libellé';
+    const inLabel = document.createElement('input');
+    inLabel.type = 'text'; inLabel.value = it.label;
+    lblLabel.appendChild(inLabel);
+
+    const lblDate = document.createElement('label');
+    lblDate.textContent = isRange ? 'Date de début' : 'Date';
+    const inDate = document.createElement('input');
+    inDate.type = 'date'; inDate.min = '2026-09-01'; inDate.max = '2027-08-31';
+    inDate.value = isRange ? base.start : (isAdded ? base.date : iso);
+    lblDate.appendChild(inDate);
+
+    let inEnd, lblEnd;
+    if (isRange) {
+      lblEnd = document.createElement('label');
+      lblEnd.textContent = 'Date de fin';
+      inEnd = document.createElement('input');
+      inEnd.type = 'date'; inEnd.min = '2026-09-01'; inEnd.max = '2027-08-31'; inEnd.value = base.end;
+      lblEnd.appendChild(inEnd);
+    }
+
+    const lblTime = document.createElement('label');
+    lblTime.textContent = 'Heure de début (facultatif)';
+    const inTime = document.createElement('input');
+    inTime.type = 'time'; inTime.value = it.time || '';
+    lblTime.appendChild(inTime);
+
+    const lblConf = document.createElement('label');
+    lblConf.className = 'check';
+    const inConf = document.createElement('input');
+    inConf.type = 'checkbox'; inConf.checked = it.confirmed === false;
+    lblConf.appendChild(inConf);
+    lblConf.appendChild(document.createTextNode('Non confirmé (affiché en rayures)'));
+
+    const actions = document.createElement('div');
+    actions.className = 'edit-actions';
+    const bSave = document.createElement('button');
+    bSave.className = 'primary'; bSave.textContent = 'Enregistrer';
+    bSave.onclick = () => {
+      const nd = inDate.value || iso;
+      if (isAdded) {
+        ADDED_EVENTS[idx] = {date: nd, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inTime.value || null, type: it.kind};
+        saveAddedEvents();
+      } else if (isRange) {
+        SEDITS[it.id] = {label: inLabel.value.trim(), start: nd, end: inEnd.value || base.end, time: inTime.value || undefined};
+        saveSEdits();
+      } else {
+        SEDITS[it.id] = {label: inLabel.value.trim(), date: nd, time: inTime.value || undefined, confirmed: !inConf.checked};
+        saveSEdits();
+      }
+      refreshCalendar();
+      const msg = (!isRange && nd !== iso) ? 'Déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
+      openPanel(nd, entriesFor(nd), schoolLabelFor(nd), msg);
+    };
+    const bCancel = document.createElement('button');
+    bCancel.textContent = 'Annuler';
+    bCancel.onclick = () => form.remove();
+    actions.appendChild(bSave);
+    actions.appendChild(bCancel);
+
+    if (!isAdded && it.sedited) {
+      const bReset = document.createElement('button');
+      bReset.textContent = 'Revenir à l\'original';
+      bReset.onclick = () => {
+        delete SEDITS[it.id];
+        saveSEdits();
+        refreshCalendar();
+        const back = isRange ? base.start : base.date;
+        openPanel(back, entriesFor(back), schoolLabelFor(back), 'Remis à l\'original.');
+      };
+      actions.appendChild(bReset);
+    }
+
+    const bDelete = document.createElement('button');
+    bDelete.textContent = 'Supprimer';
+    bDelete.onclick = () => {
+      if (isAdded) {
+        ADDED_EVENTS.splice(idx, 1);
+        saveAddedEvents();
+      } else {
+        SEDITS[it.id] = Object.assign({}, SEDITS[it.id], {deleted: true});
+        saveSEdits();
+      }
+      refreshCalendar();
+      openPanel(iso, entriesFor(iso), schoolLabelFor(iso), 'Supprimé de l\'affichage.');
+    };
+    actions.appendChild(bDelete);
+
+    form.appendChild(lblLabel);
+    form.appendChild(lblDate);
+    if (isRange) form.appendChild(lblEnd);
+    form.appendChild(lblTime);
+    form.appendChild(lblConf);
+    form.appendChild(actions);
+    return form;
+  }
 
   const close = document.createElement('button');
   close.className = 'close';
@@ -1680,15 +1828,43 @@ function describeEdit(id) {
   if (e.forfeit) parts.push('FORFAIT');
   return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : ' + parts.join(', ');
 }
+function describeSEdit(id) {
+  const isRange = id.startsWith('stageRange:');
+  const idx = parseInt(id.split(':')[1], 10);
+  const base = isRange ? STAGES[idx] : EVENTS[idx];
+  const o = SEDITS[id];
+  const label = isRange ? base.label : base.label;
+  const when = isRange ? (fmtLong(base.start) + '–' + fmtLong(base.end)) : fmtLong(base.date);
+  if (o.deleted) return '- ' + label + ' (' + when + ') : SUPPRIMÉ';
+  const parts = [];
+  if (isRange) {
+    if (o.start && o.start !== base.start) parts.push('début ' + fmtLong(base.start) + ' → ' + fmtLong(o.start));
+    if (o.end && o.end !== base.end) parts.push('fin ' + fmtLong(base.end) + ' → ' + fmtLong(o.end));
+  } else if (o.date && o.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(o.date));
+  if (o.label !== undefined && o.label !== base.label) parts.push('libellé → ' + o.label);
+  if (o.time !== undefined) parts.push('heure de début → ' + (o.time ? formatTimeShort(o.time) : 'aucune'));
+  if (o.confirmed !== undefined && o.confirmed !== base.confirmed) parts.push(o.confirmed === false ? 'passé en non confirmé' : 'passé en confirmé');
+  return '- ' + label + ' (' + when + ') : ' + parts.join(', ');
+}
+function describeAddedMatch(idx) {
+  const m = ADDED_MATCHES[idx];
+  return '- Ajout match ' + (CAT_LABEL[m.cat] || m.cat) + ' · ' + m.opponent + ' (' + fmtLong(m.date) + (m.time ? ' ' + formatTimeShort(m.time) : '') + ', ' + (m.venue === 'domicile' ? 'domicile' : 'extérieur') + (m.gym ? ', ' + gymLabel(m.gym) : '') + ')';
+}
+function describeAddedEvent(idx) {
+  const x = ADDED_EVENTS[idx];
+  return '- Ajout ' + (x.type === 'stage' ? 'stage' : 'événement') + ' · ' + x.label + ' (' + fmtLong(x.date) + (x.startTime ? ' ' + formatTimeShort(x.startTime) : '') + (x.confirmed === false ? ', non confirmé' : '') + ')';
+}
 let resetArmed = false;
 function renderEditsNote() {
   const box = document.getElementById('edits-note');
-  const ids = Object.keys(EDITS);
+  const editIds = Object.keys(EDITS);
+  const sIds = Object.keys(SEDITS);
+  const total = editIds.length + sIds.length + ADDED_MATCHES.length + ADDED_EVENTS.length;
   box.innerHTML = '';
-  if (!ids.length) { box.style.display = 'none'; resetArmed = false; return; }
+  if (!total) { box.style.display = 'none'; resetArmed = false; return; }
   box.style.display = 'block';
   const span = document.createElement('span');
-  span.textContent = ids.length + ' modification(s) enregistrée(s) sur cet appareil uniquement.';
+  span.textContent = total + ' modification(s)/ajout(s) enregistrée(s) sur cet appareil uniquement.';
   box.appendChild(span);
   const bSum = document.createElement('button');
   bSum.textContent = 'Voir le récapitulatif';
@@ -1698,7 +1874,12 @@ function renderEditsNote() {
     ta = document.createElement('textarea');
     ta.className = 'edits-summary';
     ta.readOnly = true;
-    ta.value = 'Modifications à reporter dans le planning :\n' + ids.map(describeEdit).join('\n');
+    const lines = []
+      .concat(editIds.map(describeEdit))
+      .concat(sIds.map(describeSEdit))
+      .concat(ADDED_MATCHES.map((m, i) => describeAddedMatch(i)))
+      .concat(ADDED_EVENTS.map((x, i) => describeAddedEvent(i)));
+    ta.value = 'Modifications à reporter dans le planning :\n' + lines.join('\n');
     box.appendChild(ta);
     ta.select();
     try { navigator.clipboard.writeText(ta.value); } catch (e) {}
@@ -1710,7 +1891,13 @@ function renderEditsNote() {
     if (!resetArmed) { resetArmed = true; renderEditsNote(); return; }
     resetArmed = false;
     EDITS = {};
+    SEDITS = {};
+    ADDED_MATCHES = [];
+    ADDED_EVENTS = [];
     saveEdits();
+    saveSEdits();
+    saveAddedMatches();
+    saveAddedEvents();
     refreshCalendar();
   };
   box.appendChild(bReset);
