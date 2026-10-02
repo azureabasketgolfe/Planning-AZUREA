@@ -25,8 +25,6 @@
     --gold-tint: #F5EAD0;
     --grey: #8B8B8B;
     --school-band: #F1E9D6;
-    --stage-band: #C97F0E;
-    --stage-text: #FFFFFF;
     --pnm: #3E7C74;
     --pnm-tint: #E1EDEA;
     --u15: #8B5E3C;
@@ -77,8 +75,6 @@
       --gold-tint: #33291A;
       --grey: #8892A0;
       --school-band: #23201A;
-      --stage-band: #8A5A0F;
-      --stage-text: #FFF6E5;
       --pnm: #6FB3A8;
       --pnm-tint: #1B2E2A;
       --u15: #D9AE86;
@@ -129,8 +125,6 @@
     --gold-tint: #33291A;
     --grey: #8892A0;
     --school-band: #23201A;
-    --stage-band: #8A5A0F;
-    --stage-text: #FFF6E5;
     --pnm: #6FB3A8;
     --pnm-tint: #1B2E2A;
     --u15: #D9AE86;
@@ -241,7 +235,6 @@
 
   body.hide-n3 .chip.home, body.hide-n3 .chip.away, body.hide-n3 .mini-dot.home, body.hide-n3 .mini-dot.away { display: none; }
   body.hide-event .chip.event, body.hide-event .mini-dot.event { display: none; }
-  body.hide-stage .chip.stage, body.hide-stage .mini-dot.stage { display: none; }
   body.hide-holiday .chip.holiday, body.hide-holiday .mini-dot.holiday { display: none; }
   body.hide-school .day.school { background: var(--bg-panel); }
   body.hide-school .mini-day.school { background: var(--bg-panel); }
@@ -254,14 +247,6 @@
   .mini-day { min-height: 24px; border-radius: 4px; font-size: 9.5px; text-align: center; padding-top: 2px; color: var(--ink-soft); }
   .mini-day.empty { visibility: hidden; }
   .mini-day.school { background: var(--school-band); }
-  .mini-day.stage-band {
-    background-color: transparent;
-    background-image: repeating-linear-gradient(45deg, var(--stage-band) 0, var(--stage-band) 2px, transparent 2px, transparent 4px);
-  }
-  .mini-day.stage-band.school { background-color: var(--school-band); }
-  body.hide-stage .mini-day.stage-band { background-image: none; }
-  body.hide-stage .mini-day.stage-band.school { background-color: var(--school-band); }
-  body.hide-stage .mini-day.stage-band:not(.school) { background-color: transparent; }
   .mini-day.clickable { cursor: pointer; }
   .mini-day.clickable:hover { outline: 1px solid var(--navy); }
   .mini-day.today { font-weight: 700; color: var(--orange); }
@@ -344,14 +329,6 @@
   }
   .day.empty { background: transparent; border-color: transparent; }
   .day.school { background: var(--school-band); }
-  .day.stage-band {
-    background-color: var(--bg-panel);
-    background-image: repeating-linear-gradient(45deg, var(--stage-band) 0, var(--stage-band) 5px, transparent 5px, transparent 10px);
-  }
-  .day.stage-band.school { background-color: var(--school-band); }
-  body.hide-stage .day.stage-band { background-image: none; }
-  body.hide-stage .day.stage-band.school { background-color: var(--school-band); }
-  body.hide-stage .day.stage-band:not(.school) { background-color: var(--bg-panel); }
   .day.clickable { cursor: pointer; }
   .day.clickable:hover { border-color: var(--navy); box-shadow: 0 2px 6px var(--shadow); }
   .day .num { font-size: 13px; color: var(--ink-soft); }
@@ -370,11 +347,6 @@
     border: none;
     background-color: var(--orange-tint);
     background-image: repeating-linear-gradient(45deg, var(--orange-stripe) 0, var(--orange-stripe) 1px, transparent 1px, transparent 5px);
-  }
-  .chip.stage {
-    background-color: var(--gold-tint);
-    background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 1px, transparent 5px);
-    color: var(--gold);
   }
   .chip.holiday { color: var(--grey); font-style: italic; background: none; padding-left: 0; }
   .chip.pnmHome { background: var(--pnm-tint); color: var(--pnm); font-weight: 400; }
@@ -479,7 +451,7 @@
     </div>
   </header>
 
-  <p class="updated-note">Dernière mise à jour : 1 octobre 2026</p>
+  <p class="updated-note">Dernière mise à jour : 2 octobre 2026</p>
 
   <div class="view-switch">
     <button class="view-btn active" id="btn-month-view" onclick="setView('month')">Par mois</button>
@@ -833,20 +805,17 @@ const EVENTS = [
   {date:'2027-05-30', label:'Vide-grenier', type:'event', confirmed:false},
   {date:'2027-06-05', label:'Tournoi 5x5', type:'event', confirmed:false},
   {date:'2027-06-06', label:'Tournoi 5x5', type:'event', confirmed:false},
-];
-
-const STAGES = [
-  {start:'2026-10-19', end:'2026-10-23', label:'Stage'},
-  {start:'2026-10-26', end:'2026-10-30', label:'Stage'},
-  {start:'2027-02-22', end:'2027-02-26', label:'Stage'},
-  {start:'2027-03-01', end:'2027-03-05', label:'Stage'},
-  {start:'2027-04-19', end:'2027-04-23', label:'Stage'},
-  {start:'2027-04-26', end:'2027-04-30', label:'Stage'},
-  {start:'2027-07-05', end:'2027-07-09', label:'Summer Lab'},
-  {start:'2027-07-12', end:'2027-07-16', label:'Summer Lab'},
-  {start:'2027-07-19', end:'2027-07-23', label:'Summer Lab'},
-  {start:'2027-07-26', end:'2027-07-30', label:'Summer Lab'},
-  {start:'2027-08-02', end:'2027-08-06', label:'Summer Lab'},
+  {date:'2026-10-19', label:'Stage', type:'event', confirmed:true},
+  {date:'2026-10-26', label:'Stage', type:'event', confirmed:true},
+  {date:'2027-02-22', label:'Stage', type:'event', confirmed:true},
+  {date:'2027-03-01', label:'Stage', type:'event', confirmed:true},
+  {date:'2027-04-19', label:'Stage', type:'event', confirmed:true},
+  {date:'2027-04-26', label:'Stage', type:'event', confirmed:true},
+  {date:'2027-07-05', label:'Summer Lab', type:'event', confirmed:true},
+  {date:'2027-07-12', label:'Summer Lab', type:'event', confirmed:true},
+  {date:'2027-07-19', label:'Summer Lab', type:'event', confirmed:true},
+  {date:'2027-07-26', label:'Summer Lab', type:'event', confirmed:true},
+  {date:'2027-08-02', label:'Summer Lab', type:'event', confirmed:true},
 ];
 
 const HOLIDAYS = [
@@ -875,19 +844,6 @@ function isoDate(y,m,d) {
   return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 }
 function inRange(iso, start, end) { return iso >= start && iso <= end; }
-function stageFor(iso) {
-  for (let idx = 0; idx < STAGES.length; idx++) {
-    const id = 'stageRange:' + idx;
-    const o = SEDITS[id] || {};
-    if (o.deleted) continue;
-    const start = o.start || STAGES[idx].start;
-    const end = o.end || STAGES[idx].end;
-    if (inRange(iso, start, end)) {
-      return {label: o.label !== undefined ? o.label : STAGES[idx].label, time: o.time, id, sedited: !!SEDITS[id]};
-    }
-  }
-  return null;
-}
 const MATCH_KINDS = new Set(['home','away','pnmHome','pnmAway','u15Home','u15Away','u18Home','u18Away','u13Home','u13Away','prmHome','prmAway','u21Home','u21Away','u18d3Home','u18d3Away','u11Home','u11Away','u11d3Home','u11d3Away','u18prHome','u18prAway','u15d2Home','u15d2Away','u13prHome','u13prAway','u13d3Home','u13d3Away','nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
 const FEM_KINDS = new Set(['nf2Home','nf2Away','pnfHome','pnfAway','prfHome','prfAway','rfu18Home','rfu18Away','rfu15Home','rfu15Away','rfu13Home','rfu13Away','dfu18Home','dfu18Away','dfu15Home','dfu15Away','dfu11Home','dfu11Away']);
 function timeToMinutes(t) { if (!t) return 9999; const [h,m] = t.split(':').map(Number); return h*60+m; }
@@ -994,11 +950,9 @@ function entriesFor(iso) {
     if (o.deleted) return;
     const date = o.date || x.date;
     if (date !== iso) return;
-    out.push({kind: x.type, label: o.label !== undefined ? o.label : x.label, confirmed: o.confirmed !== undefined ? o.confirmed : x.confirmed, time: o.time, id, sedited: !!SEDITS[id]});
+    out.push({kind: x.type, label: o.label !== undefined ? o.label : x.label, confirmed: o.confirmed !== undefined ? o.confirmed : x.confirmed, time: o.time, gym: o.gym !== undefined ? o.gym : (x.gym || null), id, sedited: !!SEDITS[id]});
   });
-  ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: x.type === 'stage' ? 'stage' : 'event', label: x.label, confirmed: x.confirmed, time: x.startTime || undefined, id: 'addedEvent:' + idx, added: true}); });
-  const stage = stageFor(iso);
-  if (stage) out.push({kind: 'stage', label: stage.label, time: stage.time, id: stage.id, sedited: stage.sedited});
+  ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: 'event', label: x.label, confirmed: x.confirmed, time: x.startTime || undefined, gym: x.gym || null, id: 'addedEvent:' + idx, added: true}); });
   HOLIDAYS.filter(x => x.date === iso).forEach(x => out.push({kind: 'holiday', label: x.label}));
 
   let secondary = dayMatches.filter(m => m.cat !== 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
@@ -1018,7 +972,6 @@ const todayIso = new Date().toISOString().slice(0,10);
 const FILTERS = [
   {key:'n3', label:'N3', swatch:'background:var(--navy)'},
   {key:'event', label:'Événement club', swatch:'background:var(--orange-tint)'},
-  {key:'stage', label:'Stage', swatch:'background-color:var(--gold-tint);background-image:repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 1px, transparent 5px)'},
   {key:'pnm', label:'PNM', swatch:'background:var(--pnm)'},
   {key:'prm', label:'PRM', swatch:'background:var(--prm)'},
   {key:'u21', label:'U21 R', swatch:'background:var(--u21)'},
@@ -1107,9 +1060,8 @@ function buildMonths() {
       const iso = isoDate(mo.y, mo.m, d);
       const items = entriesFor(iso);
       const school = schoolLabelFor(iso);
-      const stage = stageFor(iso);
       const cell = document.createElement('div');
-      cell.className = 'day' + (school ? ' school' : '') + (stage ? ' stage-band' : '') + (items.length ? ' clickable' : '') + (iso === todayIso ? ' today' : '');
+      cell.className = 'day' + (school ? ' school' : '') + (items.length ? ' clickable' : '') + (iso === todayIso ? ' today' : '');
       const num = document.createElement('div');
       num.className = 'num'; num.textContent = d;
       cell.appendChild(num);
@@ -1123,7 +1075,7 @@ function buildMonths() {
           if (it.kind === 'event' && it.confirmed === false) cls += ' unconfirmed';
           if (it.forfeit) cls += ' forfeit';
           c.className = cls;
-          c.textContent = (MATCH_KINDS.has(it.kind) || it.kind === 'event' || it.kind === 'stage') && it.time ? `${formatTimeShort(it.time)} ${it.label}` : it.label;
+          c.textContent = (MATCH_KINDS.has(it.kind) || it.kind === 'event') && it.time ? `${formatTimeShort(it.time)} ${it.label}` : it.label;
           if (it.forfeit) c.title = 'Forfait';
           chips.appendChild(c);
         });
@@ -1185,7 +1137,7 @@ const KIND_TO_FILTER = {
   u15d2Home:'u15d2', u15d2Away:'u15d2',
   u13prHome:'u13pr', u13prAway:'u13pr',
   u13d3Home:'u13d3', u13d3Away:'u13d3',
-  event:'event', stage:'stage', holiday:'holiday',
+  event:'event', holiday:'holiday',
 };
 function filterKeyFor(k) { return (k === 'home' || k === 'away') ? 'n3' : k.replace(/(Home|Away)$/, ''); }
 function isFilterActive(key) { return !document.body.classList.contains('hide-' + key); }
@@ -1227,9 +1179,10 @@ function openPanel(iso, rawItems, rawSchool, notice) {
   function isHomeKind(k) { return k === 'home' || k.endsWith('Home'); }
 
   const matches = items.filter(it => MATCH_KINDS.has(it.kind));
-  const homeMatches = matches.filter(it => isHomeKind(it.kind)).slice().sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
+  const gymEvents = items.filter(it => it.kind === 'event' && it.gym);
+  const homeMatches = matches.filter(it => isHomeKind(it.kind)).concat(gymEvents).sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
   const awayMatches = matches.filter(it => !isHomeKind(it.kind)).slice().sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
-  const others = items.filter(it => !MATCH_KINDS.has(it.kind));
+  const others = items.filter(it => !MATCH_KINDS.has(it.kind) && !(it.kind === 'event' && it.gym));
 
   function buildMatchCard(it) {
     const card = document.createElement('div');
@@ -1277,6 +1230,50 @@ function openPanel(iso, rawItems, rawSchool, notice) {
         const existing = card.querySelector('.edit-form');
         if (existing) { existing.remove(); return; }
         card.appendChild(buildEditForm(it));
+      };
+    }
+    return card;
+  }
+
+  function buildEventCard(it, iso) {
+    const card = document.createElement('div');
+    card.className = 'match-card';
+    const top = document.createElement('div');
+    top.className = 'mc-top';
+    const time = document.createElement('span');
+    time.className = 'mc-time';
+    time.textContent = it.time ? formatTimeShort(it.time) : '';
+    const tag = document.createElement('span');
+    tag.className = 'mc-tag';
+    tag.style.background = 'var(--orange-tint)';
+    tag.style.color = 'var(--orange)';
+    tag.textContent = it.confirmed === false ? 'Événement — non confirmé' : 'Événement';
+    top.appendChild(time);
+    top.appendChild(tag);
+    card.appendChild(top);
+    const opp = document.createElement('div');
+    opp.className = 'mc-opponent';
+    opp.textContent = it.label;
+    card.appendChild(opp);
+    if (it.note) {
+      const note = document.createElement('div');
+      note.className = 'mc-note';
+      note.textContent = it.note;
+      card.appendChild(note);
+    }
+    if (it.sedited) {
+      const ed = document.createElement('div');
+      ed.className = 'mc-edited';
+      ed.textContent = 'modifié';
+      card.appendChild(ed);
+    }
+    if (it.id) {
+      card.classList.add('editable');
+      card.onclick = (e) => {
+        if (e.target.closest('.edit-form')) return;
+        const existing = card.querySelector('.edit-form');
+        if (existing) { existing.remove(); return; }
+        card.appendChild(buildSimpleEditForm(it, iso));
       };
     }
     return card;
@@ -1404,10 +1401,14 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     return form;
   }
 
-  if (matches.length) {
+  function buildHomeCard(it) {
+    return MATCH_KINDS.has(it.kind) ? buildMatchCard(it) : buildEventCard(it, iso);
+  }
+
+  if (matches.length || gymEvents.length) {
     const hint = document.createElement('p');
     hint.className = 'mc-edit-hint';
-    hint.textContent = 'Cliquez sur un match pour modifier sa date, son heure, son lieu ou le mettre en forfait.';
+    hint.textContent = 'Cliquez sur un match ou un événement pour le modifier.';
     panel.appendChild(hint);
     const cols = document.createElement('div');
     cols.className = 'match-columns';
@@ -1424,7 +1425,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       gt.className = 'gym-title';
       gt.textContent = g.label;
       block.appendChild(gt);
-      g.list.forEach(it => block.appendChild(buildMatchCard(it)));
+      g.list.forEach(it => block.appendChild(buildHomeCard(it)));
       homeCol.appendChild(block);
     });
     cols.appendChild(homeCol);
@@ -1443,7 +1444,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     row.className = 'entry';
     const tag = document.createElement('span');
     tag.className = 'tag ' + it.kind;
-    const TAG_LABELS = {stage:'Stage', holiday:'Jour férié'};
+    const TAG_LABELS = {holiday:'Jour férié'};
     tag.textContent = TAG_LABELS[it.kind] || (it.confirmed === false ? 'Événement — non confirmé' : 'Événement');
     row.appendChild(tag);
     const label = document.createElement('div');
@@ -1462,7 +1463,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       ed.textContent = 'modifié';
       row.appendChild(ed);
     }
-    if ((it.kind === 'event' || it.kind === 'stage') && it.id) {
+    if (it.kind === 'event' && it.id) {
       row.classList.add('editable-entry');
       row.onclick = (e) => {
         if (e.target.closest('.edit-form')) return;
@@ -1476,9 +1477,8 @@ function openPanel(iso, rawItems, rawSchool, notice) {
 
   function buildSimpleEditForm(it, iso) {
     const isAdded = !!it.added;
-    const isRange = !isAdded && it.id.startsWith('stageRange:');
     const idx = parseInt(it.id.split(':')[1], 10);
-    const base = isAdded ? ADDED_EVENTS[idx] : (isRange ? STAGES[idx] : EVENTS[idx]);
+    const base = isAdded ? ADDED_EVENTS[idx] : EVENTS[idx];
     const form = document.createElement('div');
     form.className = 'edit-form';
 
@@ -1489,26 +1489,26 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     lblLabel.appendChild(inLabel);
 
     const lblDate = document.createElement('label');
-    lblDate.textContent = isRange ? 'Date de début' : 'Date';
+    lblDate.textContent = 'Date';
     const inDate = document.createElement('input');
     inDate.type = 'date'; inDate.min = '2026-09-01'; inDate.max = '2027-08-31';
-    inDate.value = isRange ? base.start : (isAdded ? base.date : iso);
+    inDate.value = isAdded ? base.date : iso;
     lblDate.appendChild(inDate);
-
-    let inEnd, lblEnd;
-    if (isRange) {
-      lblEnd = document.createElement('label');
-      lblEnd.textContent = 'Date de fin';
-      inEnd = document.createElement('input');
-      inEnd.type = 'date'; inEnd.min = '2026-09-01'; inEnd.max = '2027-08-31'; inEnd.value = base.end;
-      lblEnd.appendChild(inEnd);
-    }
 
     const lblTime = document.createElement('label');
     lblTime.textContent = 'Heure de début (facultatif)';
     const inTime = document.createElement('input');
     inTime.type = 'time'; inTime.value = it.time || '';
     lblTime.appendChild(inTime);
+
+    const lblGym = document.createElement('label');
+    lblGym.textContent = 'Gymnase (facultatif)';
+    const selGym = document.createElement('select');
+    [['', 'Non précisé']].concat(GYMS.map(g => [g.key, g.label])).forEach(([v, t]) => {
+      const o = document.createElement('option'); o.value = v; o.textContent = t; selGym.appendChild(o);
+    });
+    selGym.value = it.gym || '';
+    lblGym.appendChild(selGym);
 
     const lblConf = document.createElement('label');
     lblConf.className = 'check';
@@ -1524,17 +1524,14 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     bSave.onclick = () => {
       const nd = inDate.value || iso;
       if (isAdded) {
-        ADDED_EVENTS[idx] = {date: nd, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inTime.value || null, type: it.kind};
+        ADDED_EVENTS[idx] = {date: nd, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inTime.value || null, type: 'event', gym: selGym.value || null};
         saveAddedEvents();
-      } else if (isRange) {
-        SEDITS[it.id] = {label: inLabel.value.trim(), start: nd, end: inEnd.value || base.end, time: inTime.value || undefined};
-        saveSEdits();
       } else {
-        SEDITS[it.id] = {label: inLabel.value.trim(), date: nd, time: inTime.value || undefined, confirmed: !inConf.checked};
+        SEDITS[it.id] = {label: inLabel.value.trim(), date: nd, time: inTime.value || undefined, confirmed: !inConf.checked, gym: selGym.value || null};
         saveSEdits();
       }
       refreshCalendar();
-      const msg = (!isRange && nd !== iso) ? 'Déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
+      const msg = nd !== iso ? 'Déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
       openPanel(nd, entriesFor(nd), schoolLabelFor(nd), msg);
     };
     const bCancel = document.createElement('button');
@@ -1550,8 +1547,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
         delete SEDITS[it.id];
         saveSEdits();
         refreshCalendar();
-        const back = isRange ? base.start : base.date;
-        openPanel(back, entriesFor(back), schoolLabelFor(back), 'Remis à l\'original.');
+        openPanel(base.date, entriesFor(base.date), schoolLabelFor(base.date), 'Remis à l\'original.');
       };
       actions.appendChild(bReset);
     }
@@ -1573,8 +1569,8 @@ function openPanel(iso, rawItems, rawSchool, notice) {
 
     form.appendChild(lblLabel);
     form.appendChild(lblDate);
-    if (isRange) form.appendChild(lblEnd);
     form.appendChild(lblTime);
+    form.appendChild(lblGym);
     form.appendChild(lblConf);
     form.appendChild(actions);
     return form;
@@ -1605,7 +1601,7 @@ function openAddModal() {
   const lblType = document.createElement('label');
   lblType.textContent = 'Type';
   const selType = document.createElement('select');
-  [['match', 'Match'], ['event', 'Événement club'], ['stage', 'Stage']].forEach(([v, t]) => {
+  [['match', 'Match'], ['event', 'Événement club']].forEach(([v, t]) => {
     const o = document.createElement('option'); o.value = v; o.textContent = t; selType.appendChild(o);
   });
   lblType.appendChild(selType);
@@ -1677,12 +1673,10 @@ function openAddModal() {
         gym: selVenue.value === 'domicile' ? (selGym.value || null) : null,
       });
     } else {
-      const isStage = selType.value === 'stage';
       const lblLabel = document.createElement('label');
-      lblLabel.textContent = isStage ? 'Libellé du stage' : 'Libellé de l\'événement';
+      lblLabel.textContent = 'Libellé de l\'événement';
       const inLabel = document.createElement('input');
-      inLabel.type = 'text'; inLabel.placeholder = isStage ? 'Ex. Stage vacances de la Toussaint' : 'Ex. Loto du club';
-      if (isStage) inLabel.value = 'Stage';
+      inLabel.type = 'text'; inLabel.placeholder = 'Ex. Loto du club';
       lblLabel.appendChild(inLabel);
       body.appendChild(lblLabel);
 
@@ -1693,6 +1687,15 @@ function openAddModal() {
       lblStart.appendChild(inStart);
       body.appendChild(lblStart);
 
+      const lblEvGym = document.createElement('label');
+      lblEvGym.textContent = 'Gymnase (facultatif)';
+      const selEvGym = document.createElement('select');
+      [['', 'Non précisé'], ['allinei', 'Allinei'], ['salusse', 'Salusse Santoni']].forEach(([v, t]) => {
+        const o = document.createElement('option'); o.value = v; o.textContent = t; selEvGym.appendChild(o);
+      });
+      lblEvGym.appendChild(selEvGym);
+      body.appendChild(lblEvGym);
+
       const lblConf = document.createElement('label');
       lblConf.className = 'check';
       const inConf = document.createElement('input');
@@ -1702,7 +1705,7 @@ function openAddModal() {
       body.appendChild(lblConf);
 
       body.dataset.kind = selType.value;
-      body._getValue = () => ({ date: inDate.value, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inStart.value || null });
+      body._getValue = () => ({ date: inDate.value, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inStart.value || null, gym: selEvGym.value || null });
     }
   }
   selType.onchange = renderBody;
@@ -1721,7 +1724,7 @@ function openAddModal() {
       saveAddedMatches();
     } else {
       if (!v.label) { alert('Merci de saisir un libellé.'); return; }
-      ADDED_EVENTS.push({date: v.date, label: v.label, confirmed: v.confirmed, startTime: v.startTime, type: body.dataset.kind});
+      ADDED_EVENTS.push({date: v.date, label: v.label, confirmed: v.confirmed, startTime: v.startTime, type: body.dataset.kind, gym: v.gym || null});
       saveAddedEvents();
     }
     refreshCalendar();
@@ -1779,9 +1782,8 @@ function buildGlobalView() {
       const iso = isoDate(mo.y, mo.m, d);
       const items = entriesFor(iso);
       const school = schoolLabelFor(iso);
-      const stage = stageFor(iso);
       const cell = document.createElement('div');
-      cell.className = 'mini-day' + (school ? ' school' : '') + (stage ? ' stage-band' : '') + (items.length ? ' clickable' : '') + (iso === todayIso ? ' today' : '');
+      cell.className = 'mini-day' + (school ? ' school' : '') + (items.length ? ' clickable' : '') + (iso === todayIso ? ' today' : '');
       cell.textContent = d;
       if (items.length) {
         const dots = document.createElement('div');
@@ -1829,21 +1831,18 @@ function describeEdit(id) {
   return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : ' + parts.join(', ');
 }
 function describeSEdit(id) {
-  const isRange = id.startsWith('stageRange:');
   const idx = parseInt(id.split(':')[1], 10);
-  const base = isRange ? STAGES[idx] : EVENTS[idx];
+  const base = EVENTS[idx];
   const o = SEDITS[id];
-  const label = isRange ? base.label : base.label;
-  const when = isRange ? (fmtLong(base.start) + '–' + fmtLong(base.end)) : fmtLong(base.date);
+  const label = base.label;
+  const when = fmtLong(base.date);
   if (o.deleted) return '- ' + label + ' (' + when + ') : SUPPRIMÉ';
   const parts = [];
-  if (isRange) {
-    if (o.start && o.start !== base.start) parts.push('début ' + fmtLong(base.start) + ' → ' + fmtLong(o.start));
-    if (o.end && o.end !== base.end) parts.push('fin ' + fmtLong(base.end) + ' → ' + fmtLong(o.end));
-  } else if (o.date && o.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(o.date));
+  if (o.date && o.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(o.date));
   if (o.label !== undefined && o.label !== base.label) parts.push('libellé → ' + o.label);
   if (o.time !== undefined) parts.push('heure de début → ' + (o.time ? formatTimeShort(o.time) : 'aucune'));
   if (o.confirmed !== undefined && o.confirmed !== base.confirmed) parts.push(o.confirmed === false ? 'passé en non confirmé' : 'passé en confirmé');
+  if (o.gym !== undefined && (o.gym || null) !== (base.gym || null)) parts.push('gymnase → ' + (gymLabel(o.gym) || 'non précisé'));
   return '- ' + label + ' (' + when + ') : ' + parts.join(', ');
 }
 function describeAddedMatch(idx) {
@@ -1852,7 +1851,7 @@ function describeAddedMatch(idx) {
 }
 function describeAddedEvent(idx) {
   const x = ADDED_EVENTS[idx];
-  return '- Ajout ' + (x.type === 'stage' ? 'stage' : 'événement') + ' · ' + x.label + ' (' + fmtLong(x.date) + (x.startTime ? ' ' + formatTimeShort(x.startTime) : '') + (x.confirmed === false ? ', non confirmé' : '') + ')';
+  return '- Ajout événement · ' + x.label + ' (' + fmtLong(x.date) + (x.startTime ? ' ' + formatTimeShort(x.startTime) : '') + (x.confirmed === false ? ', non confirmé' : '') + (x.gym ? ', ' + gymLabel(x.gym) : '') + ')';
 }
 let resetArmed = false;
 function renderEditsNote() {
