@@ -181,8 +181,6 @@
   .updated-note { color: var(--ink-soft); font-size: 12.5px; margin: 10px 0 4px; font-style: italic; }
 
   .view-switch { display: flex; gap: 8px; margin: 4px 0 14px; align-items: center; }
-  .add-btn { margin-left: auto; width: 34px; height: 34px; padding: 0; border-radius: 50%; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; background: var(--orange); color: #fff; border-color: var(--orange); }
-  .add-btn:hover { filter: brightness(1.08); }
   .view-btn {
     padding: 7px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg-panel);
     color: var(--ink-soft); font-size: 13.5px; cursor: pointer; font-family: 'Work Sans', sans-serif;
@@ -211,25 +209,12 @@
   .match-card.forfeit .mc-opponent { text-decoration: line-through; color: var(--ink-soft); }
   .mc-forfeit { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: #B3261E; border: 1px solid #B3261E; border-radius: 999px; padding: 0 6px; }
   .mc-edited { font-size: 10px; color: var(--ink-soft); font-style: italic; }
-  .match-card.editable { cursor: pointer; border-radius: 6px; }
-  .match-card.editable:hover { background: var(--navy-tint); }
   .gym-block { border-left: 3px solid var(--navy); padding-left: 8px; margin-top: 4px; }
   .gym-block + .gym-block { border-top: 1px solid var(--line); margin-top: 10px; padding-top: 8px; }
   .gym-block.unassigned { border-left-color: var(--line); }
   .gym-title { font-family: 'Oswald', 'Arial Narrow', sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); margin: 2px 0 2px; }
   .gym-block.unassigned .gym-title { color: var(--ink-soft); }
   .mc-edit-hint { font-size: 10.5px; color: var(--ink-soft); margin: 0 0 8px; }
-  .edit-form { margin-top: 8px; padding: 10px; border: 1px solid var(--navy); border-radius: 8px; background: var(--bg-panel); cursor: default; display: grid; gap: 8px; }
-  .edit-form label { display: grid; gap: 3px; font-size: 11.5px; color: var(--ink-soft); }
-  .edit-form input[type="date"], .edit-form input[type="time"], .edit-form select { font: inherit; font-size: 13px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); width: 100%; }
-  .edit-form .check { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink); }
-  .edit-actions { display: flex; flex-wrap: wrap; gap: 6px; }
-  .edit-actions button { font: inherit; font-size: 12px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
-  .edit-actions button.primary { background: var(--navy); color: var(--bg); border-color: var(--navy); }
-  .panel-notice { font-size: 12.5px; background: var(--gold-tint); border: 1px solid var(--gold); border-radius: 8px; padding: 8px 10px; margin-bottom: 10px; }
-  .edits-note { font-size: 12px; color: var(--ink-soft); margin: -8px 0 16px; }
-  .edits-note button { font: inherit; font-size: 12px; background: none; border: none; color: var(--navy); text-decoration: underline; cursor: pointer; padding: 0 4px; }
-  .edits-summary { width: 100%; min-height: 90px; font: inherit; font-size: 12px; margin-top: 6px; padding: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-panel); color: var(--ink); }
   .legend-hint { font-size: 12px; color: var(--ink-soft); margin: 0 0 18px; }
   .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
 
@@ -394,7 +379,7 @@
   }
   .overlay.open { display: flex; }
   .panel {
-    background: var(--bg-panel); width: 100%; max-width: 480px; border-radius: 16px 16px 0 0;
+    background: var(--bg-panel); width: 100%; max-width: 900px; border-radius: 16px 16px 0 0;
     padding: 22px 22px 28px; box-shadow: 0 -4px 24px var(--shadow); max-height: 80vh; overflow-y: auto;
   }
   @media (min-width: 640px) {
@@ -403,10 +388,11 @@
   }
   .panel h2 { margin: 0 0 4px; font-size: 20px; color: var(--navy); text-transform: capitalize; }
   .panel .dow-full { color: var(--ink-soft); font-size: 13px; margin-bottom: 16px; text-transform: capitalize; }
+  .panel-section-title { margin: 14px 0 4px; padding-top: 10px; border-top: 2px solid var(--line); font-size: 14px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .04em; }
+  .panel-section-title:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .panel-subsection-title { margin: 8px 0 2px; font-size: 12px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; }
   .panel .entry { padding: 10px 0; border-top: 1px solid var(--line); }
   .panel .entry:first-of-type { border-top: none; }
-  .panel .entry.editable-entry { cursor: pointer; border-radius: 6px; }
-  .panel .entry.editable-entry:hover { background: var(--navy-tint); }
   .panel .entry .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-bottom: 5px; font-weight: 600; }
   .panel .entry .tag.home { background: var(--navy); color: #fff; }
   .panel .entry .tag.away { background: var(--azure-tint); color: var(--azure); }
@@ -451,20 +437,17 @@
     </div>
   </header>
 
-  <p class="updated-note">Dernière mise à jour : 2 octobre 2026</p>
+  <p class="updated-note">Dernière mise à jour : <span id="last-update"></span></p>
 
   <div class="view-switch">
     <button class="view-btn active" id="btn-month-view" onclick="setView('month')">Par mois</button>
     <button class="view-btn" id="btn-global-view" onclick="setView('global')">Vue globale</button>
-    <button class="view-btn add-btn" id="btn-add" onclick="openAddModal()" title="Ajouter un match ou un événement">+</button>
   </div>
 
   <div class="tabs" id="tabs"></div>
 
   <div class="legend" id="legend"></div>
   <p class="legend-hint">Cliquez une catégorie pour la masquer/afficher · cadre en pointillé = extérieur · rayures diagonales = non confirmé</p>
-
-  <div class="edits-note" id="edits-note" style="display:none;"></div>
 
   <div id="months"></div>
   <div id="global-view" class="global-grid" style="display:none;"></div>
@@ -480,12 +463,20 @@
   <div class="panel" id="panel"></div>
 </div>
 
-<div class="overlay" id="add-overlay">
-  <div class="panel" id="add-panel"></div>
-</div>
-
 <script>
 const DOW_LABELS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+
+/* =========================================================
+   MAINTENANCE — À METTRE À JOUR AVEC CHAQUE MODIFICATION
+   ---------------------------------------------------------
+   IMPORTANT : à chaque modification du planning effectuée avec
+   ChatGPT, mettre également à jour la date ci-dessous.
+   Cette date doit correspondre à la date de la dernière
+   modification du fichier.
+   Format : JJ mois AAAA
+   ========================================================= */
+const LAST_UPDATE = '8 octobre 2026';
+document.getElementById('last-update').textContent = LAST_UPDATE;
 const MONTHS = [
   {y:2026,m:9,label:'Septembre 2026'}, {y:2026,m:10,label:'Octobre 2026'},
   {y:2026,m:11,label:'Novembre 2026'}, {y:2026,m:12,label:'Décembre 2026'},
@@ -494,6 +485,18 @@ const MONTHS = [
   {y:2027,m:5,label:'Mai 2027'},       {y:2027,m:6,label:'Juin 2027'},
   {y:2027,m:7,label:'Juillet 2027'},   {y:2027,m:8,label:'Août 2027'},
 ];
+
+/* =========================================================
+   DONNÉES DU PLANNING — À MODIFIER AVEC CHATGPT
+   ---------------------------------------------------------
+   Les tableaux ci-dessous sont les seules données qui doivent
+   normalement être modifiées au cours de la saison.
+
+   - MATCHES, PNM_MATCHES, U15_MATCHES, etc. : matchs
+   - EVENTS : événements du club
+   - HOLIDAYS : jours fériés
+   - SCHOOL_HOLIDAYS : vacances scolaires
+   ========================================================= */
 
 const MATCHES = [
   {date:'2026-09-05', opponent:'Eybens', venue:'exterieur', time:'20:00'},
@@ -627,41 +630,41 @@ const U21_MATCHES = [
 ];
 
 const U18D3_MATCHES = [
-  {date:'2026-10-11', opponent:'US Grassoise - 2', venue:'domicile'},
+  {date:'2026-10-11', opponent:'US Grassoise - 2', venue:'domicile', time:'13:00'},
   {date:'2026-10-18', opponent:'ES Villeneuve Loubet Basket - 2', venue:'exterieur'},
 ];
 
 const U11_MATCHES = [
   {date:'2026-10-03', opponent:'Le Cannet Cote d\'Azur Basket - 1', venue:'domicile'},
-  {date:'2026-10-10', opponent:'US Grassoise - 1', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'US Grassoise - 1', venue:'exterieur', time:'12:30'},
   {date:'2026-10-17', opponent:'Sports et Loisirs Mouginois Basket', venue:'exterieur'},
 ];
 
 const U11D3_MATCHES = [
   {date:'2026-10-03', opponent:'Vence Basket Club - 2', venue:'domicile'},
-  {date:'2026-10-10', opponent:'SC Mouans Sartoux Basket Ball', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'SC Mouans Sartoux Basket Ball', venue:'domicile', time:'13:30'},
   {date:'2026-10-17', opponent:'Cansa Basket', venue:'exterieur'},
 ];
 
 const U18PR_MATCHES = [
-  {date:'2026-10-11', opponent:'US Grassoise - 1', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'US Grassoise - 1', venue:'exterieur', time:'10:30'},
   {date:'2026-10-18', opponent:'Basket Club du Pays de Fayence', venue:'domicile'},
 ];
 
 const U15D2_MATCHES = [
   {date:'2026-10-03', opponent:'ES Villeneuve Loubet Basket - 1', venue:'exterieur'},
-  {date:'2026-10-10', opponent:'Sporting Club Olympique Collois Basket', venue:'domicile'},
+  {date:'2026-10-10', opponent:'Sporting Club Olympique Collois Basket', venue:'domicile', time:'15:00'},
 ];
 
 const U13PR_MATCHES = [
   {date:'2026-10-03', opponent:'Ol. Antibes Basket AMA - 1', venue:'domicile'},
-  {date:'2026-10-10', opponent:'Le Cannet Cote d\'Azur Basket - 1', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'Le Cannet Cote d\'Azur Basket - 1', venue:'exterieur', time:'14:30'},
   {date:'2026-10-17', opponent:'US Cagnes sur Mer', venue:'domicile'},
 ];
 
 const U13D3_MATCHES = [
   {date:'2026-10-03', opponent:'SC Mouans Sartoux Basket Ball', venue:'domicile'},
-  {date:'2026-10-10', opponent:'Mandelieu La Napoule Basket Avenir', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'Mandelieu La Napoule Basket Avenir', venue:'exterieur', time:'13:30'},
   {date:'2026-10-17', opponent:'COV Valbonne', venue:'domicile'},
 ];
 
@@ -766,7 +769,7 @@ const RFU13_MATCHES = [
 
 const DFU18_MATCHES = [
   {date:'2026-10-03', opponent:'Olympique Carros Basket Ball', venue:'exterieur'},
-  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket', venue:'domicile'},
+  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket', venue:'domicile', time:'13:15'},
   {date:'2026-10-17', opponent:'Nice Basket Association Ouest', venue:'domicile'},
   {date:'2026-11-07', opponent:'Olympique Carros Basket Ball', venue:'domicile'},
   {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket', venue:'exterieur'},
@@ -775,7 +778,7 @@ const DFU18_MATCHES = [
 
 const DFU15_MATCHES = [
   {date:'2026-10-03', opponent:'Mandelieu La Napoule Basket Avenir', venue:'domicile'},
-  {date:'2026-10-10', opponent:'Cavigal Nice Basket 06', venue:'exterieur'},
+  {date:'2026-10-10', opponent:'Cavigal Nice Basket 06', venue:'exterieur', time:'12:00'},
   {date:'2026-10-17', opponent:'US Grassoise - 1', venue:'exterieur'},
   {date:'2026-11-07', opponent:'Mandelieu La Napoule Basket Avenir', venue:'exterieur'},
   {date:'2026-11-14', opponent:'Cavigal Nice Basket 06', venue:'domicile'},
@@ -784,7 +787,7 @@ const DFU15_MATCHES = [
 
 const DFU11_MATCHES = [
   {date:'2026-10-03', opponent:'Cavigal Nice Basket 06', venue:'exterieur'},
-  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket - 2', venue:'domicile'},
+  {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket - 2', venue:'domicile', time:'11:45'},
   {date:'2026-10-17', opponent:'Vence Basket Club', venue:'domicile'},
   {date:'2026-11-07', opponent:'Cavigal Nice Basket 06', venue:'domicile'},
   {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket - 2', venue:'exterieur'},
@@ -793,6 +796,8 @@ const DFU11_MATCHES = [
 
 const EVENTS = [
   {date:'2026-09-09', label:'Soirée partenaire', type:'event', confirmed:true},
+  {date:'2026-10-10', label:'Octobre rose', type:'event', confirmed:true, time:'19:30', gym:'allinei'},
+  {date:'2026-10-31', label:'Halloween', type:'event', confirmed:false, time:'19:30', gym:'allinei'},
   {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:false},
   {date:'2026-12-16', label:'Noël des enfants', type:'event', confirmed:false},
   {date:'2026-12-19', label:'Tournoi 3x3', type:'event', confirmed:false},
@@ -805,8 +810,16 @@ const EVENTS = [
   {date:'2027-05-30', label:'Vide-grenier', type:'event', confirmed:false},
   {date:'2027-06-05', label:'Tournoi 5x5', type:'event', confirmed:false},
   {date:'2027-06-06', label:'Tournoi 5x5', type:'event', confirmed:false},
-  {date:'2026-10-19', label:'Stage', type:'event', confirmed:true},
-  {date:'2026-10-26', label:'Stage', type:'event', confirmed:true},
+  {date:'2026-10-19', label:'Stage U15 U18', type:'event', confirmed:true, gym:'allinei'},
+  {date:'2026-10-20', label:'Stage U15 U18', type:'event', confirmed:true, gym:'allinei'},
+  {date:'2026-10-21', label:'Stage U15 U18', type:'event', confirmed:true, gym:'allinei'},
+  {date:'2026-10-22', label:'Stage U15 U18', type:'event', confirmed:true, gym:'allinei'},
+  {date:'2026-10-23', label:'Stage U15 U18', type:'event', confirmed:true, gym:'allinei'},
+  {date:'2026-10-26', label:'Stage U11 U13', type:'event', confirmed:true},
+  {date:'2026-10-27', label:'Stage U11 U13', type:'event', confirmed:true},
+  {date:'2026-10-28', label:'Stage U11 U13', type:'event', confirmed:true},
+  {date:'2026-10-29', label:'Stage U11 U13', type:'event', confirmed:true},
+  {date:'2026-10-30', label:'Stage U11 U13', type:'event', confirmed:true},
   {date:'2027-02-22', label:'Stage', type:'event', confirmed:true},
   {date:'2027-03-01', label:'Stage', type:'event', confirmed:true},
   {date:'2027-04-19', label:'Stage', type:'event', confirmed:true},
@@ -862,78 +875,31 @@ const CATEGORY_ARRAYS = {
   rfu18: RFU18_MATCHES, rfu15: RFU15_MATCHES, rfu13: RFU13_MATCHES,
   dfu18: DFU18_MATCHES, dfu15: DFU15_MATCHES, dfu11: DFU11_MATCHES,
 };
-function loadEdits() {
-  try { const raw = localStorage.getItem('azurea-planning-edits'); return raw ? JSON.parse(raw) : {}; }
-  catch (e) { return {}; }
-}
-function saveEdits() {
-  try { localStorage.setItem('azurea-planning-edits', JSON.stringify(EDITS)); } catch (e) {}
-}
-let EDITS = loadEdits();
-function loadSEdits() {
-  try { const raw = localStorage.getItem('azurea-planning-sedits'); return raw ? JSON.parse(raw) : {}; }
-  catch (e) { return {}; }
-}
-function saveSEdits() {
-  try { localStorage.setItem('azurea-planning-sedits', JSON.stringify(SEDITS)); } catch (e) {}
-}
-let SEDITS = loadSEdits();
-function loadAddedMatches() {
-  try { const raw = localStorage.getItem('azurea-planning-added-matches'); return raw ? JSON.parse(raw) : []; }
-  catch (e) { return []; }
-}
-function saveAddedMatches() {
-  try { localStorage.setItem('azurea-planning-added-matches', JSON.stringify(ADDED_MATCHES)); } catch (e) {}
-}
-let ADDED_MATCHES = loadAddedMatches();
-function loadAddedEvents() {
-  try { const raw = localStorage.getItem('azurea-planning-added-events'); return raw ? JSON.parse(raw) : []; }
-  catch (e) { return []; }
-}
-function saveAddedEvents() {
-  try { localStorage.setItem('azurea-planning-added-events', JSON.stringify(ADDED_EVENTS)); } catch (e) {}
-}
-let ADDED_EVENTS = loadAddedEvents();
-const GYMS = [{key:'allinei', label:'Allinei'}, {key:'salusse', label:'Salusse Santoni'}];
-function gymLabel(k) { const g = GYMS.find(x => x.key === k); return g ? g.label : null; }
+
+/* =========================================================
+   CONFIGURATION DU PLANNING
+   ========================================================= */
+const GYMS = [
+  {key:'allinei', label:'Allinei'},
+  {key:'salusse', label:'Salusse Santoni'}
+];
 const FEM_CATS = new Set(['nf2','pnf','prf','rfu18','rfu15','rfu13','dfu18','dfu15','dfu11']);
+function gymLabel(k) { const g = GYMS.find(x => x.key === k); return g ? g.label : null; }
 function defaultGym(cat) { return FEM_CATS.has(cat) ? 'salusse' : 'allinei'; }
 function kindFor(cat, venue) {
   const isHome = venue === 'domicile';
   return cat === 'n3' ? (isHome ? 'home' : 'away') : cat + (isHome ? 'Home' : 'Away');
 }
+
 function allMatches() {
   const out = [];
   Object.keys(CATEGORY_ARRAYS).forEach(cat => {
-    CATEGORY_ARRAYS[cat].forEach((m, idx) => {
-      const id = cat + ':' + idx;
-      const e = EDITS[id] || {};
-      if (e.deleted) return;
+    CATEGORY_ARRAYS[cat].forEach(m => {
       out.push({
-        id, cat, opponent: m.opponent,
-        date: e.date || m.date,
-        time: e.time !== undefined ? e.time : m.time,
-        venue: e.venue || m.venue,
-        note: e.note !== undefined ? e.note : m.note,
-        forfeit: !!e.forfeit,
-        edited: !!EDITS[id],
-        gym: e.gym !== undefined ? e.gym : (m.gym || defaultGym(cat)),
+        cat, opponent: m.opponent, date: m.date, time: m.time, venue: m.venue,
+        note: m.note, forfeit: !!m.forfeit, edited: false,
+        gym: m.gym || defaultGym(cat)
       });
-    });
-  });
-  ADDED_MATCHES.forEach((m, idx) => {
-    const id = 'added:' + idx;
-    const e = EDITS[id] || {};
-    out.push({
-      id, cat: m.cat, opponent: m.opponent,
-      date: e.date || m.date,
-      time: e.time !== undefined ? e.time : m.time,
-      venue: e.venue || m.venue,
-      note: e.note !== undefined ? e.note : m.note,
-      forfeit: !!e.forfeit,
-      edited: !!EDITS[id],
-      gym: e.gym !== undefined ? e.gym : (m.gym || defaultGym(m.cat)),
-      added: true,
     });
   });
   return out;
@@ -942,26 +908,30 @@ function allMatches() {
 function entriesFor(iso) {
   const out = [];
   const dayMatches = allMatches().filter(m => m.date === iso);
-  const n3Items = dayMatches.filter(m => m.cat === 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
-  out.push(...n3Items);
-  EVENTS.forEach((x, idx) => {
-    const id = 'event:' + idx;
-    const o = SEDITS[id] || {};
-    if (o.deleted) return;
-    const date = o.date || x.date;
-    if (date !== iso) return;
-    out.push({kind: x.type, label: o.label !== undefined ? o.label : x.label, confirmed: o.confirmed !== undefined ? o.confirmed : x.confirmed, time: o.time, gym: o.gym !== undefined ? o.gym : (x.gym || null), id, sedited: !!SEDITS[id]});
+
+  dayMatches.filter(m => m.cat === 'n3').forEach(m => {
+    out.push({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat});
   });
-  ADDED_EVENTS.forEach((x, idx) => { if (x.date === iso) out.push({kind: 'event', label: x.label, confirmed: x.confirmed, time: x.startTime || undefined, gym: x.gym || null, id: 'addedEvent:' + idx, added: true}); });
+
+  EVENTS.forEach(x => {
+    if (x.date === iso) {
+      out.push({kind: x.type, label: x.label, confirmed: x.confirmed, time: x.startTime || x.time, gym: x.gym || null});
+    }
+  });
+
   HOLIDAYS.filter(x => x.date === iso).forEach(x => out.push({kind: 'holiday', label: x.label}));
 
-  let secondary = dayMatches.filter(m => m.cat !== 'n3').map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, id: m.id, forfeit: m.forfeit, edited: m.edited, gym: m.gym, cat: m.cat, added: m.added}));
-  if (n3Items.length === 0) {
+  const secondary = dayMatches
+    .filter(m => m.cat !== 'n3')
+    .map(m => ({kind: kindFor(m.cat, m.venue), label: m.opponent, note: m.note, time: m.time, forfeit: m.forfeit, gym: m.gym, cat: m.cat}));
+
+  if (!dayMatches.some(m => m.cat === 'n3')) {
     secondary.sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
   }
   out.push(...secondary);
   return out;
 }
+
 function schoolLabelFor(iso) {
   const hit = SCHOOL_HOLIDAYS.find(r => inRange(iso, r.start, r.end));
   return hit ? hit.label : null;
@@ -1116,7 +1086,6 @@ function selectMonth(i) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('panel-' + i).classList.add('active');
   document.querySelectorAll('.tab')[i].classList.add('active');
-  try { localStorage.setItem('azurea-planning-last-month', i); } catch(e) {}
 }
 
 const FULL_DOW = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
@@ -1142,7 +1111,7 @@ const KIND_TO_FILTER = {
 function filterKeyFor(k) { return (k === 'home' || k === 'away') ? 'n3' : k.replace(/(Home|Away)$/, ''); }
 function isFilterActive(key) { return !document.body.classList.contains('hide-' + key); }
 
-function openPanel(iso, rawItems, rawSchool, notice) {
+function openPanel(iso, rawItems, rawSchool) {
   const items = rawItems.filter(it => isFilterActive(filterKeyFor(it.kind)));
   const school = isFilterActive('school') ? rawSchool : null;
   const [y,m,d] = iso.split('-').map(Number);
@@ -1159,12 +1128,6 @@ function openPanel(iso, rawItems, rawSchool, notice) {
   sub.textContent = dow + (school ? ` · ${school}` : '');
   panel.appendChild(sub);
 
-  if (notice) {
-    const nt = document.createElement('div');
-    nt.className = 'panel-notice';
-    nt.textContent = notice;
-    panel.appendChild(nt);
-  }
 
   if (!items.length) {
     const p = document.createElement('p');
@@ -1179,10 +1142,6 @@ function openPanel(iso, rawItems, rawSchool, notice) {
   function isHomeKind(k) { return k === 'home' || k.endsWith('Home'); }
 
   const matches = items.filter(it => MATCH_KINDS.has(it.kind));
-  const gymEvents = items.filter(it => it.kind === 'event' && it.gym);
-  const homeMatches = matches.filter(it => isHomeKind(it.kind)).concat(gymEvents).sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
-  const awayMatches = matches.filter(it => !isHomeKind(it.kind)).slice().sort((a,b) => timeToMinutes(a.time) - timeToMinutes(b.time));
-  const others = items.filter(it => !MATCH_KINDS.has(it.kind) && !(it.kind === 'event' && it.gym));
 
   function buildMatchCard(it) {
     const card = document.createElement('div');
@@ -1196,7 +1155,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
     tag.className = 'mc-tag';
     tag.style.background = `var(${COMP_TINT[it.kind]})`;
     tag.style.color = `var(${COMP_COLOR[it.kind]})`;
-    tag.textContent = (FEM_KINDS.has(it.kind) && isHomeKind(it.kind) ? '(Foch) ' : '') + COMP_LABEL[it.kind];
+    tag.textContent = COMP_LABEL[it.kind];
     top.appendChild(time);
     top.appendChild(tag);
     if (it.forfeit) {
@@ -1216,22 +1175,7 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       note.textContent = it.note;
       card.appendChild(note);
     }
-    if (it.edited) {
-      const ed = document.createElement('div');
-      ed.className = 'mc-edited';
-      ed.textContent = 'modifié';
-      card.appendChild(ed);
-    }
     if (it.forfeit) card.classList.add('forfeit');
-    if (it.id) {
-      card.classList.add('editable');
-      card.onclick = (e) => {
-        if (e.target.closest('.edit-form')) return;
-        const existing = card.querySelector('.edit-form');
-        if (existing) { existing.remove(); return; }
-        card.appendChild(buildEditForm(it));
-      };
-    }
     return card;
   }
 
@@ -1261,319 +1205,117 @@ function openPanel(iso, rawItems, rawSchool, notice) {
       note.textContent = it.note;
       card.appendChild(note);
     }
-    if (it.sedited) {
-      const ed = document.createElement('div');
-      ed.className = 'mc-edited';
-      ed.textContent = 'modifié';
-      card.appendChild(ed);
-    }
-    if (it.id) {
-      card.classList.add('editable');
-      card.onclick = (e) => {
-        if (e.target.closest('.edit-form')) return;
-        const existing = card.querySelector('.edit-form');
-        if (existing) { existing.remove(); return; }
-        card.appendChild(buildSimpleEditForm(it, iso));
-      };
-    }
     return card;
   }
 
-  function buildEditForm(it) {
-    const [idKind, idxStr] = it.id.split(':');
-    const idx = parseInt(idxStr, 10);
-    const base = idKind === 'added' ? ADDED_MATCHES[idx] : CATEGORY_ARRAYS[it.cat][idx];
-    const form = document.createElement('div');
-    form.className = 'edit-form';
+  // Affichage du détail du jour en 2 colonnes :
+  // 1) Domicile : Allinei puis Salusse Santoni
+  // 2) Extérieur : ordre chronologique, puis matchs sans horaire
+  const homeMatches = matches.filter(it => isHomeKind(it.kind));
+  const awayMatches = matches.filter(it => !isHomeKind(it.kind));
+  // Les événements associés à un gymnase sont affichés avec les matchs à domicile.
+  const homeEvents = items.filter(it => it.kind === 'event' && it.gym);
+  const gymOrder = ['allinei', 'salusse'];
 
-    const lblDate = document.createElement('label');
-    lblDate.textContent = 'Date';
-    const inDate = document.createElement('input');
-    inDate.type = 'date'; inDate.value = iso; inDate.min = '2026-09-01'; inDate.max = '2027-08-31';
-    lblDate.appendChild(inDate);
-
-    const lblTime = document.createElement('label');
-    lblTime.textContent = 'Heure (laisser vide si inconnue)';
-    const inTime = document.createElement('input');
-    inTime.type = 'time'; inTime.value = it.time || '';
-    lblTime.appendChild(inTime);
-
-    const lblVenue = document.createElement('label');
-    lblVenue.textContent = 'Lieu';
-    const selVenue = document.createElement('select');
-    [['domicile','Domicile'],['exterieur','Extérieur']].forEach(([v, t]) => {
-      const o = document.createElement('option'); o.value = v; o.textContent = t; selVenue.appendChild(o);
-    });
-    selVenue.value = isHomeKind(it.kind) ? 'domicile' : 'exterieur';
-    lblVenue.appendChild(selVenue);
-
-    const lblGym = document.createElement('label');
-    lblGym.textContent = 'Gymnase';
-    const selGym = document.createElement('select');
-    [['','Non précisé']].concat(GYMS.map(g => [g.key, g.label])).forEach(([v, t]) => {
-      const o = document.createElement('option'); o.value = v; o.textContent = t; selGym.appendChild(o);
-    });
-    selGym.value = it.gym || '';
-    lblGym.appendChild(selGym);
-    const syncGym = () => { lblGym.style.display = selVenue.value === 'domicile' ? 'grid' : 'none'; };
-    selVenue.onchange = syncGym;
-    syncGym();
-
-    const lblForfeit = document.createElement('label');
-    lblForfeit.className = 'check';
-    const inForfeit = document.createElement('input');
-    inForfeit.type = 'checkbox'; inForfeit.checked = !!it.forfeit;
-    lblForfeit.appendChild(inForfeit);
-    lblForfeit.appendChild(document.createTextNode('Match en forfait'));
-
-    const actions = document.createElement('div');
-    actions.className = 'edit-actions';
-    const bSave = document.createElement('button');
-    bSave.className = 'primary'; bSave.textContent = 'Enregistrer';
-    bSave.onclick = () => {
-      const nd = inDate.value || iso;
-      const nt = inTime.value || null;
-      const gym = selVenue.value === 'domicile' ? (selGym.value || null) : null;
-      const same = nd === base.date && (nt || null) === (base.time || null) && selVenue.value === base.venue && (gym || null) === (base.gym || null) && !inForfeit.checked;
-      if (same) delete EDITS[it.id];
-      else EDITS[it.id] = {date: nd, time: nt, venue: selVenue.value, forfeit: inForfeit.checked, gym: gym};
-      saveEdits();
-      refreshCalendar();
-      const msg = nd !== iso ? 'Match déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
-      openPanel(iso, entriesFor(iso), schoolLabelFor(iso), msg);
-    };
-    const bCancel = document.createElement('button');
-    bCancel.textContent = 'Annuler';
-    bCancel.onclick = () => form.remove();
-    actions.appendChild(bSave);
-    actions.appendChild(bCancel);
-    if (it.edited) {
-      const bReset = document.createElement('button');
-      bReset.textContent = 'Revenir à l\'original';
-      bReset.onclick = () => {
-        delete EDITS[it.id];
-        saveEdits();
-        refreshCalendar();
-        openPanel(base.date, entriesFor(base.date), schoolLabelFor(base.date), 'Match remis à sa date d\'origine (' + fmtLong(base.date) + ').');
-      };
-      actions.appendChild(bReset);
-    }
-    if (!it.added) {
-      const bDeleteBase = document.createElement('button');
-      bDeleteBase.textContent = 'Supprimer';
-      bDeleteBase.onclick = () => {
-        EDITS[it.id] = {deleted: true};
-        saveEdits();
-        refreshCalendar();
-        openPanel(iso, entriesFor(iso), schoolLabelFor(iso), 'Match supprimé de l\'affichage (récupérable via le récapitulatif → Tout réinitialiser, ou en me le signalant).');
-      };
-      actions.appendChild(bDeleteBase);
-    }
-    if (it.added) {
-      const bDelete = document.createElement('button');
-      bDelete.textContent = 'Supprimer ce match';
-      bDelete.onclick = () => {
-        ADDED_MATCHES.splice(idx, 1);
-        delete EDITS[it.id];
-        // re-key edits for any added match after this index
-        const renamed = {};
-        Object.keys(EDITS).forEach(k => {
-          if (k.startsWith('added:')) {
-            const n = parseInt(k.split(':')[1], 10);
-            renamed[n > idx ? 'added:' + (n - 1) : k] = EDITS[k];
-          } else renamed[k] = EDITS[k];
-        });
-        EDITS = renamed;
-        saveAddedMatches();
-        saveEdits();
-        refreshCalendar();
-        openPanel(iso, entriesFor(iso), schoolLabelFor(iso), 'Match supprimé.');
-      };
-      actions.appendChild(bDelete);
-    }
-
-    form.appendChild(lblDate);
-    form.appendChild(lblTime);
-    form.appendChild(lblVenue);
-    form.appendChild(lblGym);
-    form.appendChild(lblForfeit);
-    form.appendChild(actions);
-    return form;
+  function sortTimedFirst(a, b) {
+    const ta = timeToMinutes(a.time), tb = timeToMinutes(b.time);
+    return ta - tb;
   }
 
-  function buildHomeCard(it) {
-    return MATCH_KINDS.has(it.kind) ? buildMatchCard(it) : buildEventCard(it, iso);
-  }
+  const columns = document.createElement('div');
+  columns.className = 'match-columns';
 
-  if (matches.length || gymEvents.length) {
-    const hint = document.createElement('p');
-    hint.className = 'mc-edit-hint';
-    hint.textContent = 'Cliquez sur un match ou un événement pour le modifier.';
-    panel.appendChild(hint);
-    const cols = document.createElement('div');
-    cols.className = 'match-columns';
+  const homeCol = document.createElement('div');
+  homeCol.className = 'match-col';
+  const homeTitle = document.createElement('h4');
+  homeTitle.textContent = 'Matchs et évènements à domicile';
+  homeCol.appendChild(homeTitle);
 
-    const homeCol = document.createElement('div');
-    homeCol.className = 'match-col';
-    const homeH = document.createElement('h4'); homeH.textContent = 'Domicile'; homeCol.appendChild(homeH);
-    const groups = GYMS.map(g => ({key: g.key, label: g.label, list: homeMatches.filter(it => it.gym === g.key)}));
-    groups.push({key: '', label: 'Gymnase non précisé', list: homeMatches.filter(it => !gymLabel(it.gym))});
-    groups.filter(g => g.list.length).forEach(g => {
-      const block = document.createElement('div');
-      block.className = 'gym-block' + (g.key ? '' : ' unassigned');
-      const gt = document.createElement('div');
-      gt.className = 'gym-title';
-      gt.textContent = g.label;
-      block.appendChild(gt);
-      g.list.forEach(it => block.appendChild(buildHomeCard(it)));
-      homeCol.appendChild(block);
+  gymOrder.forEach(gym => {
+    const list = homeMatches.filter(it => (it.gym || defaultGym((KIND_TO_FILTER[it.kind] || ''))) === gym);
+    const eventList = homeEvents.filter(it => it.gym === gym);
+    const combined = list.concat(eventList).slice().sort(sortTimedFirst);
+    if (!combined.length) return;
+
+    const gymTitle = document.createElement('div');
+    gymTitle.className = 'panel-subsection-title';
+    gymTitle.textContent = gymLabel(gym) || gym;
+    homeCol.appendChild(gymTitle);
+
+    combined.forEach(it => {
+      if (it.kind === 'event') homeCol.appendChild(buildEventCard(it, iso));
+      else homeCol.appendChild(buildMatchCard(it));
     });
-    cols.appendChild(homeCol);
-
-    const awayCol = document.createElement('div');
-    awayCol.className = 'match-col';
-    const awayH = document.createElement('h4'); awayH.textContent = 'Extérieur'; awayCol.appendChild(awayH);
-    awayMatches.forEach(it => awayCol.appendChild(buildMatchCard(it)));
-    cols.appendChild(awayCol);
-
-    panel.appendChild(cols);
-  }
-
-  others.forEach(it => {
-    const row = document.createElement('div');
-    row.className = 'entry';
-    const tag = document.createElement('span');
-    tag.className = 'tag ' + it.kind;
-    const TAG_LABELS = {holiday:'Jour férié'};
-    tag.textContent = TAG_LABELS[it.kind] || (it.confirmed === false ? 'Événement — non confirmé' : 'Événement');
-    row.appendChild(tag);
-    const label = document.createElement('div');
-    label.className = 'label';
-    label.textContent = it.time ? `${formatTimeShort(it.time)} · ${it.label}` : it.label;
-    row.appendChild(label);
-    if (it.note) {
-      const note = document.createElement('div');
-      note.className = 'note';
-      note.textContent = it.note;
-      row.appendChild(note);
-    }
-    if (it.edited === undefined && it.sedited) {
-      const ed = document.createElement('div');
-      ed.className = 'mc-edited';
-      ed.textContent = 'modifié';
-      row.appendChild(ed);
-    }
-    if (it.kind === 'event' && it.id) {
-      row.classList.add('editable-entry');
-      row.onclick = (e) => {
-        if (e.target.closest('.edit-form')) return;
-        const existing = row.querySelector('.edit-form');
-        if (existing) { existing.remove(); return; }
-        row.appendChild(buildSimpleEditForm(it, iso));
-      };
-    }
-    panel.appendChild(row);
   });
 
-  function buildSimpleEditForm(it, iso) {
-    const isAdded = !!it.added;
-    const idx = parseInt(it.id.split(':')[1], 10);
-    const base = isAdded ? ADDED_EVENTS[idx] : EVENTS[idx];
-    const form = document.createElement('div');
-    form.className = 'edit-form';
-
-    const lblLabel = document.createElement('label');
-    lblLabel.textContent = 'Libellé';
-    const inLabel = document.createElement('input');
-    inLabel.type = 'text'; inLabel.value = it.label;
-    lblLabel.appendChild(inLabel);
-
-    const lblDate = document.createElement('label');
-    lblDate.textContent = 'Date';
-    const inDate = document.createElement('input');
-    inDate.type = 'date'; inDate.min = '2026-09-01'; inDate.max = '2027-08-31';
-    inDate.value = isAdded ? base.date : iso;
-    lblDate.appendChild(inDate);
-
-    const lblTime = document.createElement('label');
-    lblTime.textContent = 'Heure de début (facultatif)';
-    const inTime = document.createElement('input');
-    inTime.type = 'time'; inTime.value = it.time || '';
-    lblTime.appendChild(inTime);
-
-    const lblGym = document.createElement('label');
-    lblGym.textContent = 'Gymnase (facultatif)';
-    const selGym = document.createElement('select');
-    [['', 'Non précisé']].concat(GYMS.map(g => [g.key, g.label])).forEach(([v, t]) => {
-      const o = document.createElement('option'); o.value = v; o.textContent = t; selGym.appendChild(o);
+  // Éventuels matchs à domicile dans un autre gymnase, sans les faire disparaître.
+  const knownHome = new Set();
+  gymOrder.forEach(gym => {
+    homeMatches.filter(it => (it.gym || defaultGym((KIND_TO_FILTER[it.kind] || ''))) === gym)
+      .forEach(it => knownHome.add(it));
+  });
+  const otherHome = homeMatches.filter(it => !knownHome.has(it));
+  const otherHomeEvents = homeEvents.filter(it => !gymOrder.includes(it.gym));
+  const otherCombined = otherHome.concat(otherHomeEvents).slice().sort(sortTimedFirst);
+  if (otherCombined.length) {
+    const gymTitle = document.createElement('div');
+    gymTitle.className = 'panel-subsection-title';
+    gymTitle.textContent = 'Autre gymnase';
+    homeCol.appendChild(gymTitle);
+    otherCombined.forEach(it => {
+      if (it.kind === 'event') homeCol.appendChild(buildEventCard(it, iso));
+      else homeCol.appendChild(buildMatchCard(it));
     });
-    selGym.value = it.gym || '';
-    lblGym.appendChild(selGym);
+  }
 
-    const lblConf = document.createElement('label');
-    lblConf.className = 'check';
-    const inConf = document.createElement('input');
-    inConf.type = 'checkbox'; inConf.checked = it.confirmed === false;
-    lblConf.appendChild(inConf);
-    lblConf.appendChild(document.createTextNode('Non confirmé (affiché en rayures)'));
+  const awayCol = document.createElement('div');
+  awayCol.className = 'match-col';
+  const awayTitle = document.createElement('h4');
+  awayTitle.textContent = 'Matchs à l’extérieur';
+  awayCol.appendChild(awayTitle);
 
-    const actions = document.createElement('div');
-    actions.className = 'edit-actions';
-    const bSave = document.createElement('button');
-    bSave.className = 'primary'; bSave.textContent = 'Enregistrer';
-    bSave.onclick = () => {
-      const nd = inDate.value || iso;
-      if (isAdded) {
-        ADDED_EVENTS[idx] = {date: nd, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inTime.value || null, type: 'event', gym: selGym.value || null};
-        saveAddedEvents();
-      } else {
-        SEDITS[it.id] = {label: inLabel.value.trim(), date: nd, time: inTime.value || undefined, confirmed: !inConf.checked, gym: selGym.value || null};
-        saveSEdits();
-      }
-      refreshCalendar();
-      const msg = nd !== iso ? 'Déplacé au ' + fmtLong(nd) + '.' : 'Modification enregistrée.';
-      openPanel(nd, entriesFor(nd), schoolLabelFor(nd), msg);
-    };
-    const bCancel = document.createElement('button');
-    bCancel.textContent = 'Annuler';
-    bCancel.onclick = () => form.remove();
-    actions.appendChild(bSave);
-    actions.appendChild(bCancel);
+  const awayTimed = awayMatches.filter(it => it.time).slice().sort(sortTimedFirst);
+  const awayUntimed = awayMatches.filter(it => !it.time);
+  awayTimed.forEach(it => awayCol.appendChild(buildMatchCard(it)));
 
-    if (!isAdded && it.sedited) {
-      const bReset = document.createElement('button');
-      bReset.textContent = 'Revenir à l\'original';
-      bReset.onclick = () => {
-        delete SEDITS[it.id];
-        saveSEdits();
-        refreshCalendar();
-        openPanel(base.date, entriesFor(base.date), schoolLabelFor(base.date), 'Remis à l\'original.');
-      };
-      actions.appendChild(bReset);
-    }
+  if (awayUntimed.length) {
+    const untimedTitle = document.createElement('div');
+    untimedTitle.className = 'panel-subsection-title';
+    untimedTitle.textContent = 'Sans horaire';
+    awayCol.appendChild(untimedTitle);
+    awayUntimed.forEach(it => awayCol.appendChild(buildMatchCard(it)));
+  }
 
-    const bDelete = document.createElement('button');
-    bDelete.textContent = 'Supprimer';
-    bDelete.onclick = () => {
-      if (isAdded) {
-        ADDED_EVENTS.splice(idx, 1);
-        saveAddedEvents();
-      } else {
-        SEDITS[it.id] = Object.assign({}, SEDITS[it.id], {deleted: true});
-        saveSEdits();
-      }
-      refreshCalendar();
-      openPanel(iso, entriesFor(iso), schoolLabelFor(iso), 'Supprimé de l\'affichage.');
-    };
-    actions.appendChild(bDelete);
+  if (!homeMatches.length && !awayMatches.length) {
+    const p = document.createElement('p');
+    p.className = 'empty-msg';
+    p.textContent = 'Aucun match ce jour.';
+    homeCol.appendChild(p);
+  }
 
-    form.appendChild(lblLabel);
-    form.appendChild(lblDate);
-    form.appendChild(lblTime);
-    form.appendChild(lblGym);
-    form.appendChild(lblConf);
-    form.appendChild(actions);
-    return form;
+  columns.appendChild(homeCol);
+  columns.appendChild(awayCol);
+  panel.appendChild(columns);
+
+  // Les événements et jours particuliers restent affichés sous les 2 colonnes.
+  const gymEvents = items.filter(it => it.kind === 'event' && it.gym && !homeEvents.includes(it));
+  const others = items.filter(it => !MATCH_KINDS.has(it.kind) && !(it.kind === 'event' && it.gym));
+  const allOtherEvents = gymEvents.concat(others.filter(it => it.kind === 'event')).slice()
+    .sort(sortTimedFirst);
+
+  if (allOtherEvents.length || others.some(it => it.kind === 'holiday')) {
+    const otherTitle = document.createElement('div');
+    otherTitle.className = 'panel-section-title';
+    otherTitle.textContent = 'Autres informations';
+    panel.appendChild(otherTitle);
+
+    allOtherEvents.forEach(it => panel.appendChild(buildEventCard(it, iso)));
+    others.filter(it => it.kind === 'holiday').forEach(it => {
+      const p = document.createElement('div');
+      p.className = 'panel-subsection-title';
+      p.textContent = it.label;
+      panel.appendChild(p);
+    });
   }
 
   const close = document.createElement('button');
@@ -1586,160 +1328,6 @@ function openPanel(iso, rawItems, rawSchool, notice) {
 }
 function closePanel() { document.getElementById('overlay').classList.remove('open'); }
 document.getElementById('overlay').addEventListener('click', (e) => { if (e.target.id === 'overlay') closePanel(); });
-
-function closeAddModal() { document.getElementById('add-overlay').classList.remove('open'); }
-document.getElementById('add-overlay').addEventListener('click', (e) => { if (e.target.id === 'add-overlay') closeAddModal(); });
-
-function openAddModal() {
-  const panel = document.getElementById('add-panel');
-  panel.innerHTML = '';
-
-  const h2 = document.createElement('h2');
-  h2.textContent = 'Ajouter';
-  panel.appendChild(h2);
-
-  const lblType = document.createElement('label');
-  lblType.textContent = 'Type';
-  const selType = document.createElement('select');
-  [['match', 'Match'], ['event', 'Événement club']].forEach(([v, t]) => {
-    const o = document.createElement('option'); o.value = v; o.textContent = t; selType.appendChild(o);
-  });
-  lblType.appendChild(selType);
-  panel.appendChild(lblType);
-
-  const body = document.createElement('div');
-  body.style.display = 'grid';
-  body.style.gap = '8px';
-  body.style.marginTop = '8px';
-  panel.appendChild(body);
-
-  function renderBody() {
-    body.innerHTML = '';
-    const lblDate = document.createElement('label');
-    lblDate.textContent = 'Date';
-    const inDate = document.createElement('input');
-    inDate.type = 'date'; inDate.min = '2026-09-01'; inDate.max = '2027-08-31';
-    lblDate.appendChild(inDate);
-    body.appendChild(lblDate);
-
-    if (selType.value === 'match') {
-      const lblCat = document.createElement('label');
-      lblCat.textContent = 'Équipe / catégorie';
-      const selCat = document.createElement('select');
-      Object.keys(CAT_LABEL).forEach(k => {
-        const o = document.createElement('option'); o.value = k; o.textContent = CAT_LABEL[k]; selCat.appendChild(o);
-      });
-      lblCat.appendChild(selCat);
-      body.appendChild(lblCat);
-
-      const lblOpp = document.createElement('label');
-      lblOpp.textContent = 'Adversaire';
-      const inOpp = document.createElement('input');
-      inOpp.type = 'text'; inOpp.placeholder = 'Nom de l\'équipe adverse';
-      lblOpp.appendChild(inOpp);
-      body.appendChild(lblOpp);
-
-      const lblTime = document.createElement('label');
-      lblTime.textContent = 'Heure (laisser vide si inconnue)';
-      const inTime = document.createElement('input');
-      inTime.type = 'time';
-      lblTime.appendChild(inTime);
-      body.appendChild(lblTime);
-
-      const lblVenue = document.createElement('label');
-      lblVenue.textContent = 'Lieu';
-      const selVenue = document.createElement('select');
-      [['domicile','Domicile'],['exterieur','Extérieur']].forEach(([v, t]) => {
-        const o = document.createElement('option'); o.value = v; o.textContent = t; selVenue.appendChild(o);
-      });
-      lblVenue.appendChild(selVenue);
-      body.appendChild(lblVenue);
-
-      const lblGym = document.createElement('label');
-      lblGym.textContent = 'Gymnase (matchs à domicile)';
-      const selGym = document.createElement('select');
-      [['', 'Par défaut'], ['allinei', 'Allinei'], ['salusse', 'Salusse Santoni']].forEach(([v, t]) => {
-        const o = document.createElement('option'); o.value = v; o.textContent = t; selGym.appendChild(o);
-      });
-      lblGym.appendChild(selGym);
-      body.appendChild(lblGym);
-      const syncGym = () => { lblGym.style.display = selVenue.value === 'domicile' ? '' : 'none'; };
-      selVenue.onchange = syncGym; syncGym();
-
-      body.dataset.kind = 'match';
-      body._getValue = () => ({
-        date: inDate.value, cat: selCat.value, opponent: inOpp.value.trim(),
-        time: inTime.value || null, venue: selVenue.value,
-        gym: selVenue.value === 'domicile' ? (selGym.value || null) : null,
-      });
-    } else {
-      const lblLabel = document.createElement('label');
-      lblLabel.textContent = 'Libellé de l\'événement';
-      const inLabel = document.createElement('input');
-      inLabel.type = 'text'; inLabel.placeholder = 'Ex. Loto du club';
-      lblLabel.appendChild(inLabel);
-      body.appendChild(lblLabel);
-
-      const lblStart = document.createElement('label');
-      lblStart.textContent = 'Heure de début (facultatif)';
-      const inStart = document.createElement('input');
-      inStart.type = 'time';
-      lblStart.appendChild(inStart);
-      body.appendChild(lblStart);
-
-      const lblEvGym = document.createElement('label');
-      lblEvGym.textContent = 'Gymnase (facultatif)';
-      const selEvGym = document.createElement('select');
-      [['', 'Non précisé'], ['allinei', 'Allinei'], ['salusse', 'Salusse Santoni']].forEach(([v, t]) => {
-        const o = document.createElement('option'); o.value = v; o.textContent = t; selEvGym.appendChild(o);
-      });
-      lblEvGym.appendChild(selEvGym);
-      body.appendChild(lblEvGym);
-
-      const lblConf = document.createElement('label');
-      lblConf.className = 'check';
-      const inConf = document.createElement('input');
-      inConf.type = 'checkbox';
-      lblConf.appendChild(inConf);
-      lblConf.appendChild(document.createTextNode('Non confirmé (affiché en rayures)'));
-      body.appendChild(lblConf);
-
-      body.dataset.kind = selType.value;
-      body._getValue = () => ({ date: inDate.value, label: inLabel.value.trim(), confirmed: !inConf.checked, startTime: inStart.value || null, gym: selEvGym.value || null });
-    }
-  }
-  selType.onchange = renderBody;
-  renderBody();
-
-  const actions = document.createElement('div');
-  actions.className = 'edit-actions';
-  const bSave = document.createElement('button');
-  bSave.className = 'primary'; bSave.textContent = 'Ajouter';
-  bSave.onclick = () => {
-    const v = body._getValue();
-    if (!v.date) { alert('Merci de choisir une date.'); return; }
-    if (body.dataset.kind === 'match') {
-      if (!v.opponent) { alert('Merci de saisir le nom de l\'adversaire.'); return; }
-      ADDED_MATCHES.push({cat: v.cat, opponent: v.opponent, date: v.date, time: v.time, venue: v.venue, gym: v.gym});
-      saveAddedMatches();
-    } else {
-      if (!v.label) { alert('Merci de saisir un libellé.'); return; }
-      ADDED_EVENTS.push({date: v.date, label: v.label, confirmed: v.confirmed, startTime: v.startTime, type: body.dataset.kind, gym: v.gym || null});
-      saveAddedEvents();
-    }
-    refreshCalendar();
-    closeAddModal();
-    openPanel(v.date, entriesFor(v.date), schoolLabelFor(v.date), 'Ajouté au planning (sur cet appareil).');
-  };
-  const bCancel = document.createElement('button');
-  bCancel.textContent = 'Annuler';
-  bCancel.onclick = closeAddModal;
-  actions.appendChild(bSave);
-  actions.appendChild(bCancel);
-  panel.appendChild(actions);
-
-  document.getElementById('add-overlay').classList.add('open');
-}
 
 function buildUndated() {
   const wrap = document.querySelector('.undated');
@@ -1817,102 +1405,6 @@ function fmtLong(iso) {
   return d + ' ' + FULL_MONTH[m] + ' ' + y;
 }
 const CAT_LABEL = {n3:'N3', pnm:'PNM', u15:'RMU15', u18:'RMU18', u13:'RMU13', prm:'PRM', u21:'U21 R', u18d3:'DMU18-3', u11:'DMU11', u11d3:'DMU11-3', u18pr:'PRMU18', u15d2:'DMU15-2', u13pr:'PRMU13', u13d3:'DMU13-3', nf2:'NF2', pnf:'PNF', prf:'PRF', rfu18:'RF U18', rfu15:'RF U15', rfu13:'RF U13', dfu18:'DF U18', dfu15:'DF U15', dfu11:'DF U11'};
-function describeEdit(id) {
-  const [cat, idxStr] = id.split(':');
-  const base = CATEGORY_ARRAYS[cat][parseInt(idxStr, 10)];
-  const e = EDITS[id];
-  if (e.deleted) return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : SUPPRIMÉ';
-  const parts = [];
-  if (e.date && e.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(e.date));
-  if (e.time !== undefined && (e.time || null) !== (base.time || null)) parts.push('heure ' + (base.time ? formatTimeShort(base.time) : 'non renseignée') + ' → ' + (e.time ? formatTimeShort(e.time) : 'non renseignée'));
-  if (e.venue && e.venue !== base.venue) parts.push('lieu ' + (base.venue === 'domicile' ? 'domicile' : 'extérieur') + ' → ' + (e.venue === 'domicile' ? 'domicile' : 'extérieur'));
-  if (e.gym !== undefined && (e.gym || null) !== (base.gym || null)) parts.push('gymnase ' + (gymLabel(e.gym) || 'non précisé'));
-  if (e.forfeit) parts.push('FORFAIT');
-  return '- ' + CAT_LABEL[cat] + ' · ' + base.opponent + ' (' + fmtLong(base.date) + ') : ' + parts.join(', ');
-}
-function describeSEdit(id) {
-  const idx = parseInt(id.split(':')[1], 10);
-  const base = EVENTS[idx];
-  const o = SEDITS[id];
-  const label = base.label;
-  const when = fmtLong(base.date);
-  if (o.deleted) return '- ' + label + ' (' + when + ') : SUPPRIMÉ';
-  const parts = [];
-  if (o.date && o.date !== base.date) parts.push('date ' + fmtLong(base.date) + ' → ' + fmtLong(o.date));
-  if (o.label !== undefined && o.label !== base.label) parts.push('libellé → ' + o.label);
-  if (o.time !== undefined) parts.push('heure de début → ' + (o.time ? formatTimeShort(o.time) : 'aucune'));
-  if (o.confirmed !== undefined && o.confirmed !== base.confirmed) parts.push(o.confirmed === false ? 'passé en non confirmé' : 'passé en confirmé');
-  if (o.gym !== undefined && (o.gym || null) !== (base.gym || null)) parts.push('gymnase → ' + (gymLabel(o.gym) || 'non précisé'));
-  return '- ' + label + ' (' + when + ') : ' + parts.join(', ');
-}
-function describeAddedMatch(idx) {
-  const m = ADDED_MATCHES[idx];
-  return '- Ajout match ' + (CAT_LABEL[m.cat] || m.cat) + ' · ' + m.opponent + ' (' + fmtLong(m.date) + (m.time ? ' ' + formatTimeShort(m.time) : '') + ', ' + (m.venue === 'domicile' ? 'domicile' : 'extérieur') + (m.gym ? ', ' + gymLabel(m.gym) : '') + ')';
-}
-function describeAddedEvent(idx) {
-  const x = ADDED_EVENTS[idx];
-  return '- Ajout événement · ' + x.label + ' (' + fmtLong(x.date) + (x.startTime ? ' ' + formatTimeShort(x.startTime) : '') + (x.confirmed === false ? ', non confirmé' : '') + (x.gym ? ', ' + gymLabel(x.gym) : '') + ')';
-}
-let resetArmed = false;
-function renderEditsNote() {
-  const box = document.getElementById('edits-note');
-  const editIds = Object.keys(EDITS);
-  const sIds = Object.keys(SEDITS);
-  const total = editIds.length + sIds.length + ADDED_MATCHES.length + ADDED_EVENTS.length;
-  box.innerHTML = '';
-  if (!total) { box.style.display = 'none'; resetArmed = false; return; }
-  box.style.display = 'block';
-  const span = document.createElement('span');
-  span.textContent = total + ' modification(s)/ajout(s) enregistrée(s) sur cet appareil uniquement.';
-  box.appendChild(span);
-  const bSum = document.createElement('button');
-  bSum.textContent = 'Voir le récapitulatif';
-  bSum.onclick = () => {
-    let ta = box.querySelector('textarea');
-    if (ta) { ta.remove(); return; }
-    ta = document.createElement('textarea');
-    ta.className = 'edits-summary';
-    ta.readOnly = true;
-    const lines = []
-      .concat(editIds.map(describeEdit))
-      .concat(sIds.map(describeSEdit))
-      .concat(ADDED_MATCHES.map((m, i) => describeAddedMatch(i)))
-      .concat(ADDED_EVENTS.map((x, i) => describeAddedEvent(i)));
-    ta.value = 'Modifications à reporter dans le planning :\n' + lines.join('\n');
-    box.appendChild(ta);
-    ta.select();
-    try { navigator.clipboard.writeText(ta.value); } catch (e) {}
-  };
-  box.appendChild(bSum);
-  const bReset = document.createElement('button');
-  bReset.textContent = resetArmed ? 'Confirmer : tout réinitialiser' : 'Tout réinitialiser';
-  bReset.onclick = () => {
-    if (!resetArmed) { resetArmed = true; renderEditsNote(); return; }
-    resetArmed = false;
-    EDITS = {};
-    SEDITS = {};
-    ADDED_MATCHES = [];
-    ADDED_EVENTS = [];
-    saveEdits();
-    saveSEdits();
-    saveAddedMatches();
-    saveAddedEvents();
-    refreshCalendar();
-  };
-  box.appendChild(bReset);
-}
-
-function refreshCalendar() {
-  document.getElementById('tabs').innerHTML = '';
-  document.getElementById('months').innerHTML = '';
-  document.getElementById('global-view').innerHTML = '';
-  buildTabs();
-  buildMonths();
-  buildGlobalView();
-  selectMonth(currentMonthIndex);
-  setView(currentView);
-  renderEditsNote();
-}
 
 buildLegend();
 buildTabs();
@@ -1921,15 +1413,20 @@ buildGlobalView();
 buildUndated();
 
 let startIndex = 0;
-try {
-  const saved = parseInt(localStorage.getItem('azurea-planning-last-month'));
-  if (!isNaN(saved) && saved >= 0 && saved < MONTHS.length) startIndex = saved;
-} catch(e) {}
 // Default to current month if it falls within the season, otherwise the saved/first tab
 const now = new Date();
 const nowIdx = MONTHS.findIndex(mo => mo.y === now.getFullYear() && mo.m === now.getMonth() + 1);
 selectMonth(nowIdx >= 0 ? nowIdx : startIndex);
-renderEditsNote();
+/* =========================================================
+   MAINTENANCE
+   ---------------------------------------------------------
+   Pour modifier le planning :
+   1. Fournir ce fichier index.html à ChatGPT.
+   2. Indiquer les changements souhaités.
+   3. Remplacer l'ancien index.html sur GitHub.
+
+   Le site ne mémorise aucune modification dans le navigateur.
+   ========================================================= */
 </script>
 </body>
 </html>
