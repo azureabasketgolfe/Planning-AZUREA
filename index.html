@@ -475,7 +475,7 @@ const DOW_LABELS = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
    modification du fichier.
    Format : JJ mois AAAA
    ========================================================= */
-const LAST_UPDATE = '8 octobre 2026';
+const LAST_UPDATE = '13 octobre 2026';
 document.getElementById('last-update').textContent = LAST_UPDATE;
 const MONTHS = [
   {y:2026,m:9,label:'Septembre 2026'}, {y:2026,m:10,label:'Octobre 2026'},
@@ -631,7 +631,7 @@ const U21_MATCHES = [
 
 const U18D3_MATCHES = [
   {date:'2026-10-11', opponent:'US Grassoise - 2', venue:'domicile', time:'13:00'},
-  {date:'2026-10-18', opponent:'ES Villeneuve Loubet Basket - 2', venue:'exterieur'},
+  {date:'2026-10-18', opponent:'ES Villeneuve Loubet Basket - 2', venue:'exterieur', time:'10:00'},
 ];
 
 const U11_MATCHES = [
@@ -648,7 +648,7 @@ const U11D3_MATCHES = [
 
 const U18PR_MATCHES = [
   {date:'2026-10-10', opponent:'US Grassoise - 1', venue:'exterieur', time:'10:30'},
-  {date:'2026-10-18', opponent:'Basket Club du Pays de Fayence', venue:'domicile'},
+  {date:'2026-10-17', opponent:'Basket Club du Pays de Fayence', venue:'domicile', time:'18:00'},
 ];
 
 const U15D2_MATCHES = [
@@ -674,6 +674,7 @@ const NF2_MATCHES = [
   {date:'2026-09-26', opponent:'Saint Martin d\'Heres Basket - 1', venue:'domicile', time:'16:00'},
   {date:'2026-10-03', opponent:'AL Meyzieu - 1', venue:'exterieur', time:'20:00'},
   {date:'2026-10-10', opponent:'Amicale Laïque Lédonienne Jura Basket', venue:'domicile', time:'17:30'},
+  {date:'2026-10-17', opponent:'SMUC', venue:'exterieur', time:'16:00', note:'1/8 de Coupe Sud'},
   {date:'2026-10-24', opponent:'Pantheres Mulhouse Basket Alsace', venue:'exterieur', time:'20:00'},
   {date:'2026-10-31', opponent:'Champagnole Jura Basket', venue:'exterieur', time:'20:00'},
   {date:'2026-11-07', opponent:'Basket Club de Chenove', venue:'domicile', time:'20:00'},
@@ -751,6 +752,7 @@ const RFU18_MATCHES = [
   {date:'2026-09-26', opponent:'US Grassoise', venue:'exterieur', time:'18:00'},
   {date:'2026-10-03', opponent:'Olympique Carros Basket Ball', venue:'domicile', time:'17:00'},
   {date:'2026-10-10', opponent:'Basket Club des Baous', venue:'exterieur', time:'18:00'},
+  {date:'2026-10-17', opponent:'Sorgues BC', venue:'exterieur', time:'17:00', note:'1/8 Coupe Sud'},
 ];
 
 const RFU15_MATCHES = [
@@ -770,7 +772,7 @@ const RFU13_MATCHES = [
 const DFU18_MATCHES = [
   {date:'2026-10-03', opponent:'Olympique Carros Basket Ball', venue:'exterieur'},
   {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket', venue:'domicile', time:'13:15'},
-  {date:'2026-10-17', opponent:'Nice Basket Association Ouest', venue:'domicile', time:'09:00'},
+  {date:'2026-10-18', opponent:'Nice Basket Association Ouest', venue:'domicile', time:'09:00', gym:'salusse'},
   {date:'2026-11-07', opponent:'Olympique Carros Basket Ball', venue:'domicile'},
   {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket', venue:'exterieur'},
   {date:'2026-11-21', opponent:'Nice Basket Association Ouest', venue:'exterieur'},
@@ -788,7 +790,7 @@ const DFU15_MATCHES = [
 const DFU11_MATCHES = [
   {date:'2026-10-03', opponent:'Cavigal Nice Basket 06', venue:'exterieur'},
   {date:'2026-10-10', opponent:'Roquebrune Cap Martin Basket - 2', venue:'domicile', time:'11:45'},
-  {date:'2026-10-17', opponent:'Vence Basket Club', venue:'domicile', time:'11:00'},
+  {date:'2026-10-17', opponent:'Vence Basket Club', venue:'domicile', time:'11:00', gym:'allinei'},
   {date:'2026-11-07', opponent:'Cavigal Nice Basket 06', venue:'domicile'},
   {date:'2026-11-14', opponent:'Roquebrune Cap Martin Basket - 2', venue:'exterieur'},
   {date:'2026-11-21', opponent:'Vence Basket Club', venue:'exterieur'},
@@ -798,7 +800,8 @@ const EVENTS = [
   {date:'2026-09-09', label:'Soirée partenaire', type:'event', confirmed:true},
   {date:'2026-10-10', label:'Octobre rose', type:'event', confirmed:true, time:'19:30', gym:'allinei'},
   {date:'2026-10-31', label:'Halloween', type:'event', confirmed:false, time:'19:30', gym:'allinei'},
-  {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:false},
+  {date:'2026-11-21', label:'Challenge Benjamin', type:'event', confirmed:false, time:'09:00', gym:'allinei'},
+  {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:true, time:'09:00', gym:'allinei'},
   {date:'2026-12-16', label:'Noël des enfants', type:'event', confirmed:false},
   {date:'2026-12-19', label:'Tournoi 3x3', type:'event', confirmed:false},
   {date:'2026-12-19', label:'Mesclun', type:'event', confirmed:false},
