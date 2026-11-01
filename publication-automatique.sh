@@ -15,7 +15,7 @@ REPOLOG="$(CDPATH= cd -- "$REPO/.." && pwd)" || exit 1
 
 HOME_DIR="${HOME:?ERREUR : variable HOME absente}"
 
-export GIT_SSH_COMMAND="ssh -i $HOME_DIR/.ssh/azurea_github -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
+export GIT_SSH_COMMAND="ssh -i $HOME_DIR/.ssh/github_azurea_multi -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
 
 LOG="$REPOLOG/publication-automatique.log"
 exec >> "$LOG" 2>&1
