@@ -51,5 +51,5 @@ L'objectif de ce projet est de proposer une génération automatique du calendri
 
 ## workflow github Action
 - 2 workflow GithubAction pour gérer les anomalies:
-    - **matchs-erreurGeneration.yml**: Envoyer une notification si le fichier `matchs.json` n'est pas généré toutes les 24h
+    - **matchs-erreurGeneration.yml**: Envoyer une notification si le fichier `matchs.json` n'est pas généré toutes les 24h (lancé à 3h00 du matin)
     - **ajout-competition.yml**:Envoyer une notification si une nouvelle competition est trouvée via le fichier `ajout-competition.json`
