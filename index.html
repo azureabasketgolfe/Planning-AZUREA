@@ -560,7 +560,7 @@ const EVENTS = [
   {date:'2026-09-09', label:'Soirée partenaire', type:'event', confirmed:true},
   {date:'2026-10-10', label:'Octobre rose', type:'event', confirmed:true, time:'19:30', gym:'allinei'},
   {date:'2026-10-31', label:'Halloween', type:'event', confirmed:false, time:'19:30', gym:'allinei'},
-  {date:'2026-11-21', label:'Challenge Benjamin', type:'event', confirmed:false, time:'09:00', gym:'allinei'},
+  {date:'2026-11-21', label:'Challenge Benjamin', type:'event', confirmed:true, time:'09:00', gym:'allinei'},
   {date:'2026-10-17', label:'Tournoi 3x3', type:'event', confirmed:true, time:'09:00', gym:'allinei'},
   {date:'2026-12-16', label:'Noël des enfants', type:'event', confirmed:false},
   {date:'2026-12-19', label:'Tournoi 3x3', type:'event', confirmed:false},
@@ -1221,8 +1221,8 @@ function convertirRencontre(rencontre) {
   const time = timeMatch ? timeMatch[1] : "";
   const domicileClub = rencontre.clubDomicile === true;
   const opponent = domicileClub
-    ? (rencontre.exterieur || "Adversaire à confirmer")
-    : (rencontre.domicile || "Adversaire à confirmer");
+    ? (rencontre.exterieur || "Adversaire à confirmer ou Exempt")
+    : (rencontre.domicile || "Adversaire à confirmer ou Exempt");
 
   let note = "";
   if (
