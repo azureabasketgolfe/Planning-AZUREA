@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-03T00:00:32.986Z",
+  "genereLe": "2026-11-04T00:00:33.171Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -2099,22 +2099,6 @@
       "ville": "BEAULIEU-SUR-MER"
     },
     {
-      "id": "200000014939385",
-      "categorie": "Départementale masculine U11 - 3 phase ",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "8907",
-      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "SALLE OLYMPIE",
-      "ville": "MANDELIEU-LA-NAPOULE"
-    },
-    {
       "id": "200000014858524",
       "categorie": "Départementale féminine U13 - Division 2",
       "date": "2026-11-14T00:00:00",
@@ -2193,6 +2177,22 @@
       "poule": "Poule A",
       "salle": "GYMNASE JACQUES ALLINEI",
       "ville": "VALLAURIS/GOLFE JUAN"
+    },
+    {
+      "id": "200000014939385",
+      "categorie": "Départementale masculine U11 - 3 phase ",
+      "date": "2026-11-14T13:30:00",
+      "journee": "2",
+      "numero": "8907",
+      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "SALLE OLYMPIE",
+      "ville": "MANDELIEU-LA-NAPOULE"
     },
     {
       "id": "200000014899320",
@@ -3155,6 +3155,22 @@
       "ville": "NICE"
     },
     {
+      "id": "200000014915897",
+      "categorie": "Régionale féminine U18",
+      "date": "2026-12-05T15:00:00",
+      "journee": "4",
+      "numero": "190017",
+      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "LASA BC ASPTT",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "R1 B",
+      "salle": "SALLE SALUSSE SANTONI",
+      "ville": "ANTIBES"
+    },
+    {
       "id": "200000014915675",
       "categorie": "Régionale féminine U15",
       "date": "2026-12-05T16:00:00",
@@ -3183,22 +3199,6 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "Poule A",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
-      "id": "200000014915897",
-      "categorie": "Régionale féminine U18",
-      "date": "2026-12-05T18:00:00",
-      "journee": "4",
-      "numero": "190017",
-      "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "LASA BC ASPTT",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "R1 B",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
     },
@@ -5219,13 +5219,13 @@
       "ville": "ANTIBES"
     },
     {
-      "id": "200000014600042",
-      "categorie": "NATIONALE MASCULINE 3",
-      "date": "2027-03-27T20:00:00",
-      "journee": "23",
-      "numero": "1238",
-      "domicile": "AC GOLFE JUAN VALLAURIS - 1",
-      "exterieur": "AUBAGNE GARLABAN BASKET",
+      "id": "200000014581703",
+      "categorie": "Pré nationale masculine",
+      "date": "2027-03-27T17:00:00",
+      "journee": "20",
+      "numero": "1134",
+      "domicile": "AC GOLFE JUAN VALLAURIS - 2",
+      "exterieur": "ESCA LONDAISE",
       "scoreDomicile": null,
       "scoreExterieur": null,
       "joue": false,
@@ -5235,13 +5235,13 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014581703",
-      "categorie": "Pré nationale masculine",
+      "id": "200000014600042",
+      "categorie": "NATIONALE MASCULINE 3",
       "date": "2027-03-27T20:00:00",
-      "journee": "20",
-      "numero": "1134",
-      "domicile": "AC GOLFE JUAN VALLAURIS - 2",
-      "exterieur": "ESCA LONDAISE",
+      "journee": "23",
+      "numero": "1238",
+      "domicile": "AC GOLFE JUAN VALLAURIS - 1",
+      "exterieur": "AUBAGNE GARLABAN BASKET",
       "scoreDomicile": null,
       "scoreExterieur": null,
       "joue": false,
@@ -5509,7 +5509,7 @@
     {
       "id": "200000014915715",
       "categorie": "Régionale féminine U15",
-      "date": "2027-04-10T16:00:00",
+      "date": "2027-04-10T15:00:00",
       "journee": "14",
       "numero": "16559",
       "domicile": "IE - CTC TEAM GOLFE - ANTIBES",
@@ -5519,8 +5519,8 @@
       "joue": false,
       "clubDomicile": true,
       "poule": "R1 B",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
+      "salle": "GYMNASE JACQUES ALLINEI",
+      "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
       "id": "200000014915937",
