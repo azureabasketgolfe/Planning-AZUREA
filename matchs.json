@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-04T00:00:33.171Z",
+  "genereLe": "2026-11-05T00:00:32.682Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -1690,9 +1690,9 @@
       "numero": "48",
       "domicile": "EN - CTC TEAM GOLFE - ANTIBES",
       "exterieur": "STADE LAURENTIN BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
+      "scoreDomicile": "59",
+      "scoreExterieur": "52",
+      "joue": true,
       "clubDomicile": true,
       "poule": "Poule A",
       "salle": "SALLE SALUSSE SANTONI",
