@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-05T00:00:32.682Z",
+  "genereLe": "2026-11-06T00:00:33.571Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -2099,22 +2099,6 @@
       "ville": "BEAULIEU-SUR-MER"
     },
     {
-      "id": "200000014858524",
-      "categorie": "Départementale féminine U13 - Division 2",
-      "date": "2026-11-14T00:00:00",
-      "journee": "2",
-      "numero": "3003",
-      "domicile": "EN - CTC TEAM GOLFE - ANTIBES",
-      "exterieur": "ROQUEBRUNE CAP MARTIN BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": true,
-      "poule": "Poule A",
-      "salle": "SALLE SALUSSE SANTONI",
-      "ville": "ANTIBES"
-    },
-    {
       "id": "200000014939547",
       "categorie": "Pré régionale masculine U11 ",
       "date": "2026-11-14T11:30:00",
@@ -2129,6 +2113,22 @@
       "poule": "Poule A",
       "salle": "GYMNASE PRINCIPIANO",
       "ville": "LE CANNET"
+    },
+    {
+      "id": "200000014858524",
+      "categorie": "Départementale féminine U13 - Division 2",
+      "date": "2026-11-14T11:45:00",
+      "journee": "2",
+      "numero": "3003",
+      "domicile": "EN - CTC TEAM GOLFE - ANTIBES",
+      "exterieur": "ROQUEBRUNE CAP MARTIN BASKET",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": true,
+      "poule": "Poule A",
+      "salle": "petite salle foch",
+      "ville": "ANTIBES"
     },
     {
       "id": "200000014812776",
@@ -3379,22 +3379,6 @@
       "ville": null
     },
     {
-      "id": "200000014939563",
-      "categorie": "Pré régionale masculine U11 ",
-      "date": "2026-12-12T00:00:00",
-      "journee": "6",
-      "numero": "8770",
-      "domicile": "CAVIGAL NICE BASKET 06",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "COMPLEXE SPORTIF Serge LEYRIT",
-      "ville": "NICE"
-    },
-    {
       "id": "200000014939212",
       "categorie": "Départementale masculine U13 - 2 poule B phase 2",
       "date": "2026-12-12T00:00:00",
@@ -3441,6 +3425,22 @@
       "poule": "Poule A",
       "salle": "SALLE OMNISPORTS",
       "ville": "GRASSE"
+    },
+    {
+      "id": "200000014939563",
+      "categorie": "Pré régionale masculine U11 ",
+      "date": "2026-12-12T11:30:00",
+      "journee": "6",
+      "numero": "8770",
+      "domicile": "CAVIGAL NICE BASKET 06",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 1",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "SALLE SAINTE HELENE",
+      "ville": "NICE"
     },
     {
       "id": "200000014899255",
