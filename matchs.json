@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-06T00:00:33.571Z",
+  "genereLe": "2026-11-07T00:00:36.882Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -1706,9 +1706,9 @@
       "numero": "353",
       "domicile": "AC GOLFE JUAN VALLAURIS",
       "exterieur": "UNION SPORTIVE SOPHIA BASKET",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
+      "scoreDomicile": "76",
+      "scoreExterieur": "71",
+      "joue": true,
       "clubDomicile": true,
       "poule": "Poule A",
       "salle": "GYMNASE JACQUES ALLINEI",
@@ -2515,22 +2515,6 @@
       "ville": "VENCE"
     },
     {
-      "id": "200000014826539",
-      "categorie": "Départementale féminine U18",
-      "date": "2026-11-21T00:00:00",
-      "journee": "6",
-      "numero": "1047",
-      "domicile": "NICE BASKET ASSOCIATION OUEST",
-      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule D",
-      "salle": "SALLE JULES ROMAIN",
-      "ville": "NICE"
-    },
-    {
       "id": "200000014858526",
       "categorie": "Départementale féminine U13 - Division 2",
       "date": "2026-11-21T00:00:00",
@@ -2609,6 +2593,22 @@
       "poule": "Poule A",
       "salle": "GYMNASE JEAN DANDREIS",
       "ville": "VENCE"
+    },
+    {
+      "id": "200000014826539",
+      "categorie": "Départementale féminine U18",
+      "date": "2026-11-21T15:30:00",
+      "journee": "6",
+      "numero": "1047",
+      "domicile": "NICE BASKET ASSOCIATION OUEST",
+      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule D",
+      "salle": "SALLE JULES ROMAIN",
+      "ville": "NICE"
     },
     {
       "id": "200000014938951",
