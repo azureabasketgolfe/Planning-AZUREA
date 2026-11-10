@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-09T00:00:39.499Z",
+  "genereLe": "2026-11-10T00:00:14.597Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -2179,22 +2179,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014939385",
-      "categorie": "Départementale masculine U11 - 3 phase ",
-      "date": "2026-11-14T13:30:00",
-      "journee": "2",
-      "numero": "8907",
-      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "SALLE OLYMPIE",
-      "ville": "MANDELIEU-LA-NAPOULE"
-    },
-    {
       "id": "200000014899320",
       "categorie": "Régionale masculine U13",
       "date": "2026-11-14T14:00:00",
@@ -2273,6 +2257,22 @@
       "poule": "R1 B",
       "salle": "SALLE SALUSSE SANTONI",
       "ville": "ANTIBES"
+    },
+    {
+      "id": "200000014939385",
+      "categorie": "Départementale masculine U11 - 3 phase ",
+      "date": "2026-11-14T15:30:00",
+      "journee": "2",
+      "numero": "8907",
+      "domicile": "MANDELIEU LA NAPOULE BASKET AVENIR",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "SALLE OLYMPIE",
+      "ville": "MANDELIEU-LA-NAPOULE"
     },
     {
       "id": "200000014915666",
