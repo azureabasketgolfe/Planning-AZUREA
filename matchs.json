@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-10T00:00:14.597Z",
+  "genereLe": "2026-11-11T00:00:32.240Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -2499,22 +2499,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014812782",
-      "categorie": "Départementale féminine U11",
-      "date": "2026-11-21T00:00:00",
-      "journee": "6",
-      "numero": "2085",
-      "domicile": "VENCE BASKET CLUB",
-      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule C",
-      "salle": "GYMNASE JEAN DANDREIS",
-      "ville": "VENCE"
-    },
-    {
       "id": "200000014858526",
       "categorie": "Départementale féminine U13 - Division 2",
       "date": "2026-11-21T00:00:00",
@@ -2561,6 +2545,22 @@
       "poule": "Poule A",
       "salle": "GYMNASE JACQUES ALLINEI",
       "ville": "VALLAURIS/GOLFE JUAN"
+    },
+    {
+      "id": "200000014812782",
+      "categorie": "Départementale féminine U11",
+      "date": "2026-11-21T13:30:00",
+      "journee": "6",
+      "numero": "2085",
+      "domicile": "VENCE BASKET CLUB",
+      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule C",
+      "salle": "GYMNASE JEAN DANDREIS",
+      "ville": "VENCE"
     },
     {
       "id": "200000014939234",
