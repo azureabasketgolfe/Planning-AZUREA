@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-12T00:00:31.729Z",
+  "genereLe": "2026-11-14T00:00:33.232Z",
   "nombreRencontres": 364,
   "rencontres": [
     {
@@ -2595,22 +2595,6 @@
       "ville": "VENCE"
     },
     {
-      "id": "200000014826539",
-      "categorie": "Départementale féminine U18",
-      "date": "2026-11-21T15:30:00",
-      "journee": "6",
-      "numero": "1047",
-      "domicile": "NICE BASKET ASSOCIATION OUEST",
-      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule D",
-      "salle": "SALLE JULES ROMAIN",
-      "ville": "NICE"
-    },
-    {
       "id": "200000014938951",
       "categorie": "1/8 COUPE Sud U18F ",
       "date": "2026-11-21T16:00:00",
@@ -2657,6 +2641,22 @@
       "poule": "Poule A",
       "salle": "COSEC CAVAILLON",
       "ville": "CAVAILLON"
+    },
+    {
+      "id": "200000014826539",
+      "categorie": "Départementale féminine U18",
+      "date": "2026-11-22T12:30:00",
+      "journee": "6",
+      "numero": "1047",
+      "domicile": "NICE BASKET ASSOCIATION OUEST",
+      "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule D",
+      "salle": "SALLE JULES ROMAIN",
+      "ville": "NICE"
     },
     {
       "id": "200000014671498",
@@ -2723,22 +2723,6 @@
       "ville": null
     },
     {
-      "id": "200000014939397",
-      "categorie": "Départementale masculine U11 - 3 phase ",
-      "date": "2026-11-28T00:00:00",
-      "journee": "4",
-      "numero": "8919",
-      "domicile": "AS MONACO BASKET - 3",
-      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "SALLE GASTON MEDECIN",
-      "ville": "MONACO"
-    },
-    {
       "id": "200000014939555",
       "categorie": "Pré régionale masculine U11 ",
       "date": "2026-11-28T13:00:00",
@@ -2753,6 +2737,22 @@
       "poule": "Poule A",
       "salle": "MAISON DES SPORTS",
       "ville": "CAGNES-SUR-MER"
+    },
+    {
+      "id": "200000014939397",
+      "categorie": "Départementale masculine U11 - 3 phase ",
+      "date": "2026-11-28T13:00:00",
+      "journee": "4",
+      "numero": "8919",
+      "domicile": "AS MONACO BASKET - 3",
+      "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "GYMNASE ECOLE ST CHARLES",
+      "ville": "MONACO"
     },
     {
       "id": "200000014899340",
