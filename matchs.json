@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-22T00:00:33.432Z",
+  "genereLe": "2026-11-23T00:00:32.176Z",
   "nombreRencontres": 359,
   "rencontres": [
     {
@@ -2490,9 +2490,9 @@
       "numero": "8912",
       "domicile": "ETOILE SAINT BARTHELEMY NICE BASKET",
       "exterieur": "AC GOLFE JUAN VALLAURIS - 2",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
+      "scoreDomicile": "26",
+      "scoreExterieur": "27",
+      "joue": true,
       "clubDomicile": false,
       "poule": "Poule A",
       "salle": "COMPLEXE ALBERT MALATESTA",
@@ -2618,9 +2618,9 @@
       "numero": "1047",
       "domicile": "NICE BASKET ASSOCIATION OUEST",
       "exterieur": "EN - CTC TEAM GOLFE - ANTIBES",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
+      "scoreDomicile": "41",
+      "scoreExterieur": "73",
+      "joue": true,
       "clubDomicile": false,
       "poule": "Poule D",
       "salle": "SALLE JULES ROMAIN",
