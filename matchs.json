@@ -1,5 +1,5 @@
 {
-  "genereLe": "2026-11-26T00:00:31.205Z",
+  "genereLe": "2026-11-27T00:00:15.751Z",
   "nombreRencontres": 359,
   "rencontres": [
     {
@@ -3283,22 +3283,6 @@
       "ville": "VALLAURIS/GOLFE JUAN"
     },
     {
-      "id": "200000014939188",
-      "categorie": "Départementale Masculine U15-2 Phase 2",
-      "date": "2026-12-12T00:00:00",
-      "journee": "5",
-      "numero": "8299",
-      "domicile": "BASKET CLUB DES BAOUS",
-      "exterieur": "AC GOLFE JUAN VALLAURIS",
-      "scoreDomicile": null,
-      "scoreExterieur": null,
-      "joue": false,
-      "clubDomicile": false,
-      "poule": "Poule A",
-      "salle": "GYMN. COLLEGE DES BAOUS",
-      "ville": "SAINT-JEANNET"
-    },
-    {
       "id": "200000014939246",
       "categorie": "Pré régional masculine U13 phase 2 ",
       "date": "2026-12-12T11:30:00",
@@ -3441,6 +3425,22 @@
       "poule": "R1 B",
       "salle": "SALLE PAUL LANGEVIN",
       "ville": "LA SEYNE-SUR-MER"
+    },
+    {
+      "id": "200000014939188",
+      "categorie": "Départementale Masculine U15-2 Phase 2",
+      "date": "2026-12-12T18:00:00",
+      "journee": "5",
+      "numero": "8299",
+      "domicile": "BASKET CLUB DES BAOUS",
+      "exterieur": "AC GOLFE JUAN VALLAURIS",
+      "scoreDomicile": null,
+      "scoreExterieur": null,
+      "joue": false,
+      "clubDomicile": false,
+      "poule": "Poule A",
+      "salle": "GYMN. COLLEGE DES BAOUS",
+      "ville": "SAINT-JEANNET"
     },
     {
       "id": "200000014599481",
